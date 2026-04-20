@@ -1,14 +1,14 @@
 ## **Table of Contents**
-##1. Project Introduction	
+## 1. Project Introduction	
   #1.1 Purpose	4
   #1.2 Scope	4
   #1.3 Definitions & Abbreviations	4
   #1.4 References	5
-#2. System Overview	6
+## 2. System Overview	6
   #2.1 System Description	6
   #2.2 Business Goals	6
   #2.3 Stakeholders	6
-#3. Architectural Drivers	7
+## 3. Architectural Drivers	7
   #3.1 Functional Requirements	7
   #3.2 Non-Functional Requirements (Quality Attributes)	7
 #4. Key Architectural Decisions	9
