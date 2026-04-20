@@ -1,9 +1,9 @@
 ## **Table of Contents**
 ## 1. Project Introduction	
-  ## 1.1 Purpose	
-  ## 1.2 Scope	
-  ## 1.3 Definitions & Abbreviations	
-  ## 1.4 References	
+  ### 1.1 Purpose	
+  ### 1.2 Scope	
+  ### 1.3 Definitions & Abbreviations	
+  ### 1.4 References	
 ## 2. System Overview	
   ## 2.1 System Description	
   ## 2.2 Business Goals	
@@ -15,7 +15,7 @@
    ## 4.1 Architecture Style: Modular Monolith with Plugin Architecture	
   ## 4.2 Plugin Hook System (Observer Pattern)	
   ## 4.3 Template/Theme Engine	
-   ##4.4 Dual-Mode API (Traditional + Headless)	
+  ## 4.4 Dual-Mode API (Traditional + Headless)	
    ## 4.5 RBAC Security Model	
 ## 5. System Context (C4 Level 1)	
   ## 5.1 Context Description	
