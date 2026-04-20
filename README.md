@@ -47,7 +47,7 @@
 ## 15. Appendix	
 ## A. Diagrams Index	
 ## B. Document Revision History	
-#1-project-description
+[Project Description](#1-project-description)
 
 This project focuses on designing the software architecture of WordPress, one of the world’s most widely used Content Management Systems (CMS). The main objective of this project is to study, analyze, and redesign WordPress using modern software architecture principles to improve its scalability, maintainability, security, and extensibility while preserving its core features such as plugins, themes, and user-friendly content management.
 
@@ -64,7 +64,6 @@ Security is ensured through Role-Based Access Control (RBAC), authentication mec
 The technology stack may include PHP/Laravel or Node.js for backend development, React/Next.js for frontend interfaces, MySQL for database management, and Elasticsearch for advanced search functionality.
 
 Overall, this project demonstrates a modern architectural redesign of WordPress as a scalable, secure, and extensible CMS platform. It serves as a strong academic and practical reference for understanding large-scale software system design and modern web architecture principles.
-![My Project Screenshot](description.png)
 
 . ### 1.1 Purpose
 
