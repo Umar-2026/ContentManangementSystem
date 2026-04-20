@@ -48,7 +48,7 @@
 ## 15. Appendix	
 ## A. Diagrams Index	
 ## B. Document Revision History	
-## 1-Project-Introduction
+## 1 Project Introduction
 ### 1.1 Purpose
 This Software Architecture Design Document (SADD) describes the complete architectural blueprint for a Content Management System (CMS) modeled after WordPress. The document captures architectural decisions, structural decomposition, component interactions, deployment strategies, and quality attribute requirements. It serves as the authoritative technical reference for developers, architects, testers, and stakeholders involved in the design, development, and maintenance of the system.
 
@@ -63,7 +63,7 @@ The CMS covers the following functional domains:
 •	Admin dashboard for site configuration
 •	SEO, analytics, and media library management
 
-1.3 Definitions & Abbreviations
+### 1.3 Definitions & Abbreviations
 Term / Acronym	Definition
 CMS	Content Management System
 API	Application Programming Interface
@@ -78,27 +78,27 @@ SaaS	Software as a Service
 SSR	Server-Side Rendering
 CSR	Client-Side Rendering
 
-1.4 References
+### 1.4 References
 •	Kashifraz/SE-HyperlocalDeliverySystem-Architecture (Reference Architecture Repo)
 •	WordPress Core Architecture Documentation — wordpress.org
 •	C4 Model for Software Architecture — c4model.com
 •	ISO/IEC 42010:2011 — Software Architecture Description Standard
 •	OWASP Top 10 — Web Application Security
  
-2. System Overview
-2.1 System Description
+### 2. System Overview
+### 2.1 System Description
 The CMS is a full-featured, extensible web-based platform that enables non-technical users to create, edit, organize, and publish digital content. Inspired by WordPress, the system follows a plugin-based monolithic-to-microservices evolution path — starting with a modular monolith and providing clean API boundaries for future service extraction.
 
 The platform supports multiple modes of operation: a traditional server-rendered front-end for SEO-critical use cases, and a headless API mode for decoupled front-end frameworks (React, Vue, mobile apps).
 
-2.2 Business Goals
+### 2.2 Business Goals
 •	Enable rapid content creation and publishing with zero coding requirement
 •	Support 10,000+ concurrent users with sub-2-second page load times
 •	Provide a plugin marketplace allowing third-party feature extensions
 •	Ensure enterprise-grade security and GDPR compliance
 •	Deliver a mobile-responsive admin interface
 
-2.3 Stakeholders
+## 2.3 Stakeholders
 Stakeholder	Role	Interest
 Content Authors	Create and publish content	Easy editor, preview, scheduling
 Site Administrators	Manage site settings, users, plugins	Full control, security, backups
@@ -108,8 +108,8 @@ End Users (Visitors)	Consume content	Fast, responsive, accessible pages
 DevOps/Infra Team	Deploy and scale the platform	Containerization, monitoring, CI/CD
 Business Owners	Drive revenue via content	Analytics, SEO, uptime, cost
  
-3. Architectural Drivers
-3.1 Functional Requirements
+## 3. Architectural Drivers
+### 3.1 Functional Requirements
 ID	Feature	Description
 FR-01	User Authentication	Register, login, logout, password reset via JWT/OAuth
 FR-02	Role & Permission Mgmt	RBAC: Super Admin, Admin, Editor, Author, Subscriber
@@ -126,7 +126,7 @@ FR-12	SEO Management	Meta tags, sitemaps, structured data, Open Graph
 FR-13	Content Scheduling	Publish/unpublish at scheduled date/time
 FR-14	Multi-site Support	Single installation serving multiple sites/domains
 
-3.2 Non-Functional Requirements (Quality Attributes)
+### 3.2 Non-Functional Requirements (Quality Attributes)
 Attribute	Requirement	Target
 Performance	Page load time	< 2s for front-end pages; < 300ms for API
 Scalability	Concurrent users	10,000+ concurrent; horizontal scaling support
@@ -137,32 +137,32 @@ Extensibility	New feature addition	Hook-based plugin API; backward-compatible ve
 Portability	Deployment targets	Docker-compatible; cloud-agnostic (AWS, GCP, Azure)
 Usability	Admin UX	Responsive admin on mobile; WCAG 2.1 AA accessibility
  
-4. Key Architectural Decisions
-4.1 Architecture Style: Modular Monolith with Plugin Architecture
+# 4. Key Architectural Decisions
+### 4.1 Architecture Style: Modular Monolith with Plugin Architecture
 The system adopts a Modular Monolith pattern as the core architectural style. All modules are deployed as a single unit but maintain clean internal boundaries through a hook/filter event bus. This mirrors WordPress's proven approach and reduces operational complexity while allowing future service extraction.
 •	Pros: Simpler deployment, no network latency between modules, easier transactions
 •	Cons: Single scaling unit; mitigated via horizontal replication and caching
 •	Migration path: Bounded modules can be extracted to microservices when needed
 
-4.2 Plugin Hook System (Observer Pattern)
+### 4.2 Plugin Hook System (Observer Pattern)
 All extensibility is achieved through an Action Hook and Filter Hook system, inspired by WordPress's apply_filters/do_action mechanism. Plugins register callbacks for named events; the core never depends on plugin code directly.
 
-4.3 Template/Theme Engine
+### 4.3 Template/Theme Engine
 Themes follow a hierarchical template resolution (single.php → singular.php → index.php). A Twig-compatible templating engine provides safe, sandboxed rendering without PHP execution in themes.
 
-4.4 Dual-Mode API (Traditional + Headless)
+### 4.4 Dual-Mode API (Traditional + Headless)
 The system natively supports both server-rendered HTML (for SEO) and a JSON REST/GraphQL API for headless consumption. This enables decoupled front-ends (Next.js, React Native, mobile apps).
 
-4.5 RBAC Security Model
+### 4.5 RBAC Security Model
 Role-Based Access Control with five built-in roles: Super Admin, Admin, Editor, Author, Subscriber. Permissions are additive and stored in a capability matrix, extensible by plugins.
  
-5. System Context (C4 Level 1)
-5.1 Context Description
+## 5. System Context (C4 Level 1)
+### 5.1 Context Description
 The System Context diagram shows the CMS as a black box and identifies all external users and systems that interact with it. The CMS sits at the center, interacting with human users (authors, visitors, admins) and external systems (email, CDN, third-party auth, payment, analytics).
 
 Note: A full SVG/visual context diagram is provided as a separate diagram artifact alongside this document.
 
-5.2 External Actors & Systems
+### 5.2 External Actors & Systems
 Actor / System	Type	Interaction
 Content Author	Human	Creates and manages content via Admin Dashboard
 Site Administrator	Human	Configures plugins, themes, users, settings
@@ -176,11 +176,11 @@ Search Engine (Elasticsearch)	External	Indexes and retrieves full-text content s
 Analytics (Google Analytics)	External	Tracks page views, sessions, and conversion events
 Payment Gateway (Stripe)	External	Handles premium plugin/theme subscription payments
  
-6. Container Architecture (C4 Level 2)
-6.1 Overview
+## 6. Container Architecture (C4 Level 2)
+### 6.1 Overview
 The Container diagram decomposes the CMS into deployable units (containers). Each container is independently buildable, has a clearly defined responsibility, and communicates via HTTP/REST or message queues.
 
-6.2 Container Inventory
+### 6.2 Container Inventory
 Container	Technology	Port	Responsibility
 Web Front-End	Node.js / Next.js	3000	SSR/CSR public-facing site
 Admin Dashboard	React SPA	3001	Content authoring & site management UI
@@ -194,7 +194,7 @@ Search Service	Elasticsearch	9200	Full-text content indexing & search
 File Storage Proxy	MinIO / S3 proxy	9000	Media upload, resizing, serving
 Notification Service	SMTP / SendGrid API	External	Email notifications and newsletters
 
-6.3 Inter-Container Communication
+### 6.3 Inter-Container Communication
 •	Admin Dashboard → CMS Core API: REST/JSON over HTTPS (JWT-authenticated)
 •	Web Front-End → CMS Core API: REST + GraphQL for data fetching
 •	CMS Core API → MySQL: Direct JDBC/PDO connection (connection pool)
@@ -204,8 +204,8 @@ Notification Service	SMTP / SendGrid API	External	Email notifications and newsle
 •	Job Queue Worker → Notification Service: Sends emails via SMTP/SendGrid
 •	Web Front-End → CDN: Static assets served via CDN edge nodes
  
-7. Component Architecture (C4 Level 3)
-7.1 CMS Core API Components
+### 7. Component Architecture (C4 Level 3)
+## 7.1 CMS Core API Components
 Component	Responsibility
 AuthController	Handles login, registration, JWT issuance, OAuth callback, password reset
 UserManager	User CRUD, role assignment, capability checks (can_user_do())
@@ -224,7 +224,7 @@ SEOManager	Meta tag injection, sitemap.xml generation, canonical URLs
 SchedulerService	Cron-based content publishing, cleanup jobs, cache warming
 AuditLogger	Records all admin actions to audit_log table for compliance
 
-7.2 Plugin Architecture Detail
+### 7.2 Plugin Architecture Detail
 The plugin system is the cornerstone of extensibility. Plugins interact with core exclusively through the Hook Dispatcher, never via direct coupling:
 •	Action Hooks: do_action('cms_save_post', $post_id) — plugins register listeners
 •	Filter Hooks: apply_filters('cms_the_content', $content) — plugins modify data
@@ -232,7 +232,7 @@ The plugin system is the cornerstone of extensibility. Plugins interact with cor
 •	Plugin Sandbox: Plugin PHP/JS executed in a restricted environment; cannot access core internals directly
 •	Plugin Database: Plugins may create own DB tables using provided Migration API
 
-7.3 Theme Architecture Detail
+### 7.3 Theme Architecture Detail
 The theme system uses a template hierarchy to resolve the correct template for any given URL:
 •	index.php → fallback for all content types
 •	single-{post-type}.php → single post of a custom type
@@ -241,8 +241,8 @@ The theme system uses a template hierarchy to resolve the correct template for a
 •	taxonomy-{taxonomy}-{term}.php → taxonomy archive pages
 •	search.php → search results page
  
-8. Data Architecture
-8.1 Database Schema (Core Tables)
+## 8. Data Architecture
+### 8.1 Database Schema (Core Tables)
 Table	Key Columns	Purpose
 cms_posts	ID, post_author, post_date, post_content, post_title, post_status, post_type, post_name, post_parent	All content entities (posts, pages, media, revisions)
 cms_postmeta	meta_id, post_id, meta_key, meta_value	EAV extension for post metadata (custom fields)
@@ -255,13 +255,13 @@ cms_comments	comment_ID, comment_post_ID, comment_author, comment_content, comme
 cms_options	option_id, option_name, option_value, autoload	Site configuration key-value store
 cms_links	link_id, link_url, link_name, link_category	Blogroll/link management
 
-8.2 Data Access Patterns
+### 8.2 Data Access Patterns
 •	ORM Layer: All DB access through an Active Record / Query Builder abstraction (no raw SQL in business logic)
 •	Object Cache: Frequently-accessed queries (post, options) cached in Redis with TTL
 •	Transients: Time-limited cached computation results stored in cms_options or Redis
 •	Database Abstraction: $wpdb-equivalent wrapper allows plugin authors to run parameterized queries safely
 
-8.3 Caching Strategy
+### 8.3 Caching Strategy
 Cache Type	Storage	TTL / Strategy
 Page Cache	Redis / CDN edge	Full rendered HTML; invalidated on content save
 Object Cache	Redis	DB query results; TTL 300s; invalidated on write
@@ -269,8 +269,8 @@ Transients	Redis or MySQL	Plugin-managed; explicit TTL per transient
 Asset Cache	CDN (Cloudflare)	JS/CSS/images; versioned filenames for cache busting
 Search Index	Elasticsearch	Near-real-time; updated on content publish/update
  
-9. API Design
-9.1 REST API Endpoint Summary
+## 9. API Design
+### 9.1 REST API Endpoint Summary
 Method	Endpoint	Description	Auth Required
 POST	/api/v1/auth/register	User registration	No
 POST	/api/v1/auth/login	Login → JWT token	No
@@ -287,7 +287,7 @@ GET	/api/v1/users/me	Current user profile	JWT
 GET	/api/v1/plugins	List installed plugins	Admin
 POST	/api/v1/plugins/{id}/activate	Activate a plugin	Admin
 
-9.2 API Authentication Flow
+## 9.2 API Authentication Flow
 •	Client POSTs credentials to /api/v1/auth/login
 •	Server validates credentials, issues Access Token (15 min) and Refresh Token (7 days)
 •	Client attaches Authorization: Bearer {token} header to all protected API requests
@@ -295,8 +295,8 @@ POST	/api/v1/plugins/{id}/activate	Activate a plugin	Admin
 •	Refresh token endpoint /api/v1/auth/refresh issues new access token without re-login
 •	OAuth2 flow available via /api/v1/auth/google for social login
  
-10. Security Architecture
-10.1 Security Controls by Layer
+## 10. Security Architecture
+### 10.1 Security Controls by Layer
 Layer	Threat	Control
 Network	DDoS, MITM	WAF (Cloudflare), TLS 1.3 everywhere, rate limiting
 Authentication	Credential theft, brute force	bcrypt passwords, JWT, MFA, account lockout after 5 failures
@@ -307,7 +307,7 @@ File Uploads	Malware, path traversal	MIME type validation, randomized filenames,
 Data at Rest	Database breach	AES-256 encryption for PII fields; encrypted backups
 Audit	Insider threats	Audit log for all admin actions with user, IP, timestamp
 
-10.2 OWASP Compliance Mapping
+### 10.2 OWASP Compliance Mapping
 •	A01 Broken Access Control → RBAC enforcement + capability matrix
 •	A02 Cryptographic Failures → bcrypt, AES-256, TLS 1.3
 •	A03 Injection → ORM parameterized queries, input sanitization
@@ -316,11 +316,11 @@ Audit	Insider threats	Audit log for all admin actions with user, IP, timestamp
 •	A06 Vulnerable Components → Automated dependency scanning (Snyk, npm audit)
 •	A07 Auth Failures → JWT, MFA, account lockout, refresh token rotation
  
-11. Deployment Architecture
-11.1 Deployment Overview
+## 11. Deployment Architecture
+### 11.1 Deployment Overview
 The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The deployment targets a cloud environment (AWS/GCP/Azure) and supports auto-scaling, rolling updates, and zero-downtime deployments.
 
-11.2 Infrastructure Components
+## 11.2 Infrastructure Components
 Component	Technology	Purpose
 Load Balancer	AWS ALB / Nginx Ingress	Distribute traffic across API pods; SSL termination
 API Pods	Docker + K8s Deployment	CMS Core API; HPA for auto-scaling (min 2, max 20)
@@ -334,7 +334,7 @@ Object Storage	AWS S3 + CloudFront	Media files; CDN-distributed worldwide
 Container Registry	AWS ECR / Docker Hub	Stores versioned Docker images for all services
 Secrets Management	AWS Secrets Manager / Vault	Stores DB credentials, API keys, JWT secrets
 
-11.3 CI/CD Pipeline
+### 11.3 CI/CD Pipeline
 •	Source Control: GitHub (feature branch → PR → main)
 •	CI: GitHub Actions — runs lint, unit tests, integration tests, security scan on every PR
 •	Build: Docker image build + push to ECR on merge to main
@@ -342,7 +342,7 @@ Secrets Management	AWS Secrets Manager / Vault	Stores DB credentials, API keys, 
 •	Blue-Green / Canary: Production deploys via 10% canary with automatic rollback on error rate > 1%
 •	DB Migrations: Flyway/Liquibase migrations run as K8s Job pre-deployment
  
-12. Architecture Quality Scenarios
+## 12. Architecture Quality Scenarios
 Attribute	Stimulus	Environment	Response (Target)
 Performance	10,000 concurrent users	Normal load	P95 API response < 300ms; page load < 2s via CDN cache
 Scalability	5× traffic spike (launch day)	Peak load	HPA scales API pods from 4 to 20; no downtime, same P95
@@ -352,7 +352,7 @@ Extensibility	New plugin installed	Admin action	Plugin activates in < 5s; no CMS
 Maintainability	Core version update	Maintenance window	Rolling update with zero downtime; plugins backward-compatible via versioned hooks
 Recoverability	Data corruption event	Disaster recovery	Point-in-time restore from RDS backup in < 15 min; RPO < 1 hour
  
-13. Technology Stack
+## 13. Technology Stack
 Layer	Technology	Rationale
 Backend API	PHP 8.2 + Laravel 11 (or Node.js + Express)	Proven CMS ecosystem; mature ORM; plugin ecosystem
 Front-End (Public)	Next.js 14 (React)	SSR/SSG for SEO; streaming; ISR for performance
@@ -369,7 +369,7 @@ CI/CD	GitHub Actions + ArgoCD	GitOps workflow; automated test and deploy
 Monitoring	Prometheus + Grafana + Sentry	Metrics, dashboards, error tracking
 Logging	ELK Stack (Elasticsearch, Logstash, Kibana)	Centralized structured log search
  
-14. Risks & Mitigations
+## 14. Risks & Mitigations
 Risk	Severity	Mitigation
 Plugin conflicts breaking core stability	High	Plugin versioning API; isolated sandbox execution; automated compatibility tests
 Database single point of failure	High	RDS Multi-AZ; read replicas; automated failover; tested restore procedures
@@ -379,7 +379,7 @@ Theme developer XSS injection	Medium	Twig auto-escaping; Content Security Policy
 Media storage costs explosion	Low	S3 lifecycle policies; image optimization before storage; storage quotas per site
 Search index out of sync with DB	Medium	Transactional outbox pattern; index reconciliation cron job; dead letter queue
  
-15. Appendix
+## 15. Appendix
 A. Diagrams Index
 •	Figure 1: System Context Diagram (C4 Level 1) — separate diagram file
 •	Figure 2: Container Diagram (C4 Level 2) — separate diagram file
