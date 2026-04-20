@@ -5,50 +5,50 @@
   ### 1.3 Definitions & Abbreviations	
   ### 1.4 References	
 ## 2. System Overview	
-  ## 2.1 System Description	
-  ## 2.2 Business Goals	
-  ## 2.3 Stakeholders	
+  ### 2.1 System Description	
+  ### 2.2 Business Goals	
+  ### 2.3 Stakeholders	
 ## 3. Architectural Drivers	
-  ## 3.1 Functional Requirements	
-  ## 3.2 Non-Functional Requirements (Quality Attributes)	
+  ### 3.1 Functional Requirements	
+  ### 3.2 Non-Functional Requirements (Quality Attributes)	
 ## 4. Key Architectural Decisions	
-   ## 4.1 Architecture Style: Modular Monolith with Plugin Architecture	
-  ## 4.2 Plugin Hook System (Observer Pattern)	
-  ## 4.3 Template/Theme Engine	
+   ### 4.1 Architecture Style: Modular Monolith with Plugin Architecture	
+  ### 4.2 Plugin Hook System (Observer Pattern)	
+  ### 4.3 Template/Theme Engine	
   ## 4.4 Dual-Mode API (Traditional + Headless)	
-   ## 4.5 RBAC Security Model	
+   ### 4.5 RBAC Security Model	
 ## 5. System Context (C4 Level 1)	
-  ## 5.1 Context Description	
-  ## 5.2 External Actors & Systems	
+  ### 5.1 Context Description	
+  ### 5.2 External Actors & Systems	
 ## 6. Container Architecture (C4 Level 2)	
-  ## 6.1 Overview	
+  ### 6.1 Overview	
 ## 6.2 Container Inventory	
-  ## 6.3 Inter-Container Communication	
+  ### 6.3 Inter-Container Communication	
 ## 7. Component Architecture (C4 Level 3)	
-  ## 7.1 CMS Core API Components	
-  ## 7.2 Plugin Architecture Detail	
-  ## 7.3 Theme Architecture Detail	
+  ### 7.1 CMS Core API Components	
+  ### 7.2 Plugin Architecture Detail	
+  ### 7.3 Theme Architecture Detail	
 ## 8. Data Architecture	
-  ## 8.1 Database Schema (Core Tables)	
-  ## 8.2 Data Access Patterns	
-  ## 8.3 Caching Strategy	
+  ### 8.1 Database Schema (Core Tables)	
+  ### 8.2 Data Access Patterns	
+  ### 8.3 Caching Strategy	
 ## 9. API Design	
-  ## 9.1 REST API Endpoint Summary	
-  ## 9.2 API Authentication Flow	
+  ### 9.1 REST API Endpoint Summary	
+  ### 9.2 API Authentication Flow	
 ## 10. Security Architecture	
-  ## 10.1 Security Controls by Layer	
-  ## 10.2 OWASP Compliance Mapping	
+  ### 10.1 Security Controls by Layer	
+  ### 10.2 OWASP Compliance Mapping	
 ## 11. Deployment Architecture	
-  ## 11.1 Deployment Overview	
-  ## 11.2 Infrastructure Components	
-  ## 11.3 CI/CD Pipeline	
+  ### 11.1 Deployment Overview	
+  ### 11.2 Infrastructure Components	
+  ### 11.3 CI/CD Pipeline	
 ## 12. Architecture Quality Scenarios	
 ## 13. Technology Stack	
 ## 14. Risks & Mitigations	
 ## 15. Appendix	
 ## A. Diagrams Index	
 ## B. Document Revision History	
-# 1-Project-Introduction
+## 1-Project-Introduction
 1.1 Purpose
 This Software Architecture Design Document (SADD) describes the complete architectural blueprint for a Content Management System (CMS) modeled after WordPress. The document captures architectural decisions, structural decomposition, component interactions, deployment strategies, and quality attribute requirements. It serves as the authoritative technical reference for developers, architects, testers, and stakeholders involved in the design, development, and maintenance of the system.
 
