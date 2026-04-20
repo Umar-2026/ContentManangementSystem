@@ -65,6 +65,7 @@ Security is ensured through Role-Based Access Control (RBAC), authentication mec
 The technology stack may include PHP/Laravel or Node.js for backend development, React/Next.js for frontend interfaces, MySQL for database management, and Elasticsearch for advanced search functionality.
 
 Overall, this project demonstrates a modern architectural redesign of WordPress as a scalable, secure, and extensible CMS platform. It serves as a strong academic and practical reference for understanding large-scale software system design and modern web architecture principles.
+![My Project Screenshot](description.png)
 
 ### 1.1 Purpose
 
