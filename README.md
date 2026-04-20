@@ -48,7 +48,22 @@
 ## 15. Appendix	
 ## A. Diagrams Index	
 ## B. Document Revision History	
-#1-project-introduction
+# Project Description
+This project focuses on designing the software architecture of WordPress, one of the world’s most widely used Content Management Systems (CMS). The purpose of this project is to study, redesign, and document a modern architectural model of WordPress that improves scalability, maintainability, security, and extensibility while preserving its core strengths such as plugin support, theme customization, and user-friendly content management.
+
+WordPress is widely used by bloggers, businesses, e-commerce stores, educational institutions, and enterprises for website development. However, as modern web applications demand higher performance, API-driven services, cloud deployment, and stronger security, a well-structured software architecture becomes essential. This project provides a complete architectural blueprint that demonstrates how WordPress can be designed using modern software engineering principles.
+
+The proposed system architecture follows a Modular Monolith with Plugin-Based Design. This approach keeps the simplicity of a single deployable system while dividing the application into independent modules such as user management, content management, media handling, plugin manager, theme engine, API services, and security services. Each module has clear responsibilities and interacts through defined interfaces. This makes the system easier to maintain and upgrade.
+
+A major part of the design is the Plugin Hook System, based on the Observer Pattern, where plugins can extend functionality without modifying core source code. Similarly, the Theme Engine manages front-end presentation through templates and reusable layouts, allowing developers to customize website appearance efficiently.
+
+The architecture also supports Dual-Mode Access, including traditional server-side rendered pages and headless CMS operation through REST APIs. This enables integration with modern frameworks such as React, Vue, mobile apps, and third-party systems.
+
+Security is incorporated through Role-Based Access Control (RBAC), authentication, authorization, encrypted communication, secure file uploads, and OWASP best practices. Performance improvements include caching with Redis, optimized database queries, CDN support, and scalable deployment using Docker and Kubernetes.
+
+The technology stack may include PHP/Laravel or Node.js for backend services, React/Next.js for frontend interfaces, MySQL for data storage, and Elasticsearch for advanced search features.
+
+Overall, this project demonstrates how WordPress can be architecturally redesigned as a modern, enterprise-ready CMS platform. It serves as an academic and practical model for understanding large-scale web system design, software architecture patterns, and future-ready CMS development.
 ### 1.1 Purpose
 This Software Architecture Design Document (SADD) describes the complete architectural blueprint for a Content Management System (CMS) modeled after WordPress. The document captures architectural decisions, structural decomposition, component interactions, deployment strategies, and quality attribute requirements. It serves as the authoritative technical reference for developers, architects, testers, and stakeholders involved in the design, development, and maintenance of the system.
 
