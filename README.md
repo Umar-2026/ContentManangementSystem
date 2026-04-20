@@ -1,5 +1,5 @@
-## Table of Contents
-# 1. Project Introduction	
+### Table of Contents
+## 1. Project Introduction	
   ## 1.1 Purpose	
   ### 1.2 Scope	
   ### 1.3 Definitions & Abbreviations	
