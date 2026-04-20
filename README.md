@@ -1,9 +1,9 @@
 # Table of Contents
- - 1. Project Description	
-   ### 1.1 Purpose	
-  ### 1.2 Scope	
-  ### 1.3 Definitions & Abbreviations	
-  ### 1.4 References	
+# 1. Project Description	
+   - 1.1 Purpose	
+   - 1.2 Scope	
+  - 1.3 Definitions & Abbreviations	
+  - 1.4 References	
 ## 2. System Overview	
   ### 2.1 System Description	
   ### 2.2 Business Goals	
