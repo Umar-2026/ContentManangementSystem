@@ -47,7 +47,7 @@
 ## 15. Appendix	
 ## A. Diagrams Index	
 ## B. Document Revision History	
-#1 Project Description
+#1-project-description
 
 This project focuses on designing the software architecture of WordPress, one of the world’s most widely used Content Management Systems (CMS). The main objective of this project is to study, analyze, and redesign WordPress using modern software architecture principles to improve its scalability, maintainability, security, and extensibility while preserving its core features such as plugins, themes, and user-friendly content management.
 
