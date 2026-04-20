@@ -49,10 +49,10 @@
 ## A. Diagrams Index	
 ## B. Document Revision History	
 ## 1-Project-Introduction
-1.1 Purpose
+### 1.1 Purpose
 This Software Architecture Design Document (SADD) describes the complete architectural blueprint for a Content Management System (CMS) modeled after WordPress. The document captures architectural decisions, structural decomposition, component interactions, deployment strategies, and quality attribute requirements. It serves as the authoritative technical reference for developers, architects, testers, and stakeholders involved in the design, development, and maintenance of the system.
 
-1.2 Scope
+### 1.2 Scope
 The CMS covers the following functional domains:
 •	Content authoring, publishing, and management (posts, pages, media)
 •	User registration, authentication, roles, and permissions
