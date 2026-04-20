@@ -1,4 +1,4 @@
-## **Table of Contents**
+## Table of Contents
 ## 1. Project Introduction	
   ### 1.1 Purpose	
   ### 1.2 Scope	
