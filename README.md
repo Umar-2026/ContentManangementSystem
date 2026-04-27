@@ -1,5 +1,5 @@
 # Table of Contents
-- [1. Project Description](#1-project-description)
+[1. Project Description](#1-project-description)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Scope](#12-scope)
   - [1.3 Definitions & Abbreviations](#13-definitions--abbreviations)
