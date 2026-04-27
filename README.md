@@ -3,7 +3,7 @@
    - 1.1 [Purpose](#1.1-Purpose)	
    - 1.2 [Scope](#1.2-scope)		
    - 1.3 Definitions & Abbreviations	
-2. [System Overview](#2-oystem-overview)	
+2. [System Overview](#2-system-overview)	
   - 2.1 System Description	
   - 2.2 Business Goals	
   - 2.3 Stakeholders	
