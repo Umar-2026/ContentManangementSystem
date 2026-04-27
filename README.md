@@ -10,7 +10,7 @@
 3.  [Architectural Drivers](#3-architectural-drivers)	
   - 3.1 Functional Requirements	
   - 3.2 Non-Functional Requirements (Quality Attributes)	
-## 4. Key Architectural Decisions	
+4.   [Key Architectural Decisions](#4-Key-architectural-decisions)
    - 4.1 Architecture Style: Modular Monolith with Plugin Architecture	
    - 4.2 Plugin Hook System (Observer Pattern)	
    - 4.3 Template/Theme Engine	
