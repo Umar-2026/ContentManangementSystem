@@ -7,7 +7,7 @@
   - [2.1 System Description](#21-system-description)
   - [2.2 Business Goals](#22-business-goals)
   - [2.3 Stakeholders](#23-stakeholders)
-- [3. Architectural Drivers](#3-architectural-drivers)
+- [3. Architectural View](#3-architectural-view)
   - [3.1 Functional Requirements](#31-functional-requirements)
   - [3.2 Non-Functional Requirements (Quality Attributes)](#32-non-functional-requirements-quality-attributes)
 - [4. Key Architectural Decisions](#4-key-architectural-decisions)
