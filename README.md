@@ -1,7 +1,7 @@
 # Table of Contents
 1. [Project Description](#1-project-description)
    - [1.1 Purpose](#11-purpose)
-   - 1.2 [Scope](#1.2-scope)		
+   - 1.2 [Scope](#12-scope)		
    - 1.3 Definitions & Abbreviations	
 2. [System Overview](#2-system-overview)	
   - 2.1 System Description	
