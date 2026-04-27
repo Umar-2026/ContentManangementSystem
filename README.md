@@ -15,11 +15,11 @@
    - 4.2 Plugin Hook System (Observer Pattern)	
    - 4.3 Template/Theme Engine	
    - 4.4 Dual-Mode API (Traditional + Headless)	
-   ### 4.5 RBAC Security Model	
-## 5. System Context (C4 Level 1)	
+   - 4.5 RBAC Security Model
+5. [5. System Context (C4 Level 1)](#5-System-Context-(C4-Level-1))		
   ### 5.1 Context Description	
   ### 5.2 External Actors & Systems	
-## 6. Container Architecture (C4 Level 2)	
+6. [Container Architecture (C4 Level 2)](#Container-Architecture-(C4-Level-2))
   ### 6.1 Overview	
 ## 6.2 Container Inventory	
   ### 6.3 Inter-Container Communication	
