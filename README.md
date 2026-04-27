@@ -7,7 +7,7 @@
   - 2.1 System Description	
   - 2.2 Business Goals	
   - 2.3 Stakeholders	
-3.  [Architectural Drivers](#3-architectural-drivers)	
+3.  [Architectural View](#3-architectural-view)	
   - 3.1 Functional Requirements	
   - 3.2 Non-Functional Requirements (Quality Attributes)	
 4.   [Key Architectural Decisions](#4-Key-architectural-decisions)
@@ -92,17 +92,10 @@ RBAC	Role-Based Access Control
 SaaS	Software as a Service
 SSR	Server-Side Rendering
 CSR	Client-Side Rendering
-
-### 1.4 References
-•	Kashifraz/SE-HyperlocalDeliverySystem-Architecture (Reference Architecture Repo)
-•	WordPress Core Architecture Documentation — wordpress.org
-•	C4 Model for Software Architecture — c4model.com
-•	ISO/IEC 42010:2011 — Software Architecture Description Standard
-•	OWASP Top 10 — Web Application Security
  
 ### 2. System Overview
 ### 2.1 System Description
-The CMS is a full-featured, extensible web-based platform that enables non-technical users to create, edit, organize, and publish digital content. Inspired by WordPress, the system follows a plugin-based monolithic-to-microservices evolution path — starting with a modular monolith and providing clean API boundaries for future service extraction.
+The CMS is a full-featured, extensible web-based platform that enables non-technical users to create, edit, organize, and publish digital content make website, blog or post . Inspired by WordPress, the system follows a plugin-based monolithic-to-microservices evolution path — starting with a modular monolith and providing clean API boundaries for future service extraction.
 
 The platform supports multiple modes of operation: a traditional server-rendered front-end for SEO-critical use cases, and a headless API mode for decoupled front-end frameworks (React, Vue, mobile apps).
 
@@ -123,7 +116,7 @@ End Users (Visitors)	Consume content	Fast, responsive, accessible pages
 DevOps/Infra Team	Deploy and scale the platform	Containerization, monitoring, CI/CD
 Business Owners	Drive revenue via content	Analytics, SEO, uptime, cost
  
-## 3. Architectural Drivers
+## 3. Architectural View
 ### 3.1 Functional Requirements
 ID	Feature	Description
 FR-01	User Authentication	Register, login, logout, password reset via JWT/OAuth
@@ -396,19 +389,12 @@ Search index out of sync with DB	Medium	Transactional outbox pattern; index reco
  
 ## 15. Appendix
 A. Diagrams Index
-•	Figure 1: System Context Diagram (C4 Level 1) — separate diagram file
-•	Figure 2: Container Diagram (C4 Level 2) — separate diagram file
-•	Figure 3: Component Diagram (C4 Level 3) — separate diagram file
-•	Figure 4: Deployment Architecture Diagram — separate diagram file
-•	Figure 5: Database Entity Relationship Diagram — separate diagram file
-•	Figure 6: Security Architecture Layer Diagram — separate diagram file
-
-B. Document Revision History
-Version	Date	Description	Author
-0.1	Mar 2025	Initial draft — system context and overview	Architecture Team
-0.5	Mar 2025	Added container and component sections	Architecture Team
-0.9	Apr 2025	Security, deployment, and API sections	Architecture Team
-1.0	Apr 2025	Final review and sign-off	Architecture Team
+•	Figure 1: System Context Diagram (C4 Level 1) 
+•	Figure 2: Container Diagram (C4 Level 2)
+•	Figure 3: Component Diagram (C4 Level 3)
+•	Figure 4: Deployment Architecture Diagram 
+•	Figure 5: Database Entity Relationship Diagram
+•	Figure 6: Security Architecture Layer Diagram 
 
 
 
