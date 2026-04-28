@@ -184,7 +184,7 @@ Role-Based Access Control with five built-in roles: Super Admin, Admin, Editor, 
 ## 5. System Context (C4 Level 1)
 ### 5.1 Context Description
 The System Context diagram shows the CMS as a black box and identifies all external users and systems that interact with it. The CMS sits at the center, interacting with human users (authors, visitors, admins) and external systems (email, CDN, third-party auth, payment, analytics).
-![System Context Diagram](system-context-diagram.png)
+![System Context](system%20context%20diagram.png)
 
 Note: A full SVG/visual context diagram is provided as a separate diagram artifact alongside this document.
 
