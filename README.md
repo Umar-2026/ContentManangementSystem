@@ -207,7 +207,7 @@ Note: A full SVG/visual context diagram is provided as a separate diagram artifa
 ## 6. Container Architecture (C4 Level 2)
 ### 6.1 Overview
 The Container diagram decomposes the CMS into deployable units (containers). Each container is independently buildable, has a clearly defined responsibility, and communicates via HTTP/REST or message queues.
-
+![Container Diagram](container%20diagram.png)
 ### 6.2 Container Inventory
 Container	Technology	Port	Responsibility
 ## 🏗️ System Architecture - Containers
@@ -237,6 +237,7 @@ Container	Technology	Port	Responsibility
 •	Web Front-End → CDN: Static assets served via CDN edge nodes
  
 ### 7. Component Architecture (C4 Level 3)
+![Component Diagram](Component%20Diagram.png)
 ## 7.1 CMS Core API Components
 ## 🔧 Core Components
 
@@ -339,6 +340,7 @@ The theme system uses a template hierarchy to resolve the correct template for a
 •	OAuth2 flow available via /api/v1/auth/google for social login
  
 ## 10. Security Architecture
+![Security Layers](security%20layers.png)
 ### 10.1 Security Controls by Layer
 
 | Layer              | Threat                        | Control |
@@ -364,6 +366,7 @@ The theme system uses a template hierarchy to resolve the correct template for a
 ## 11. Deployment Architecture
 ### 11.1 Deployment Overview
 The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The deployment targets a cloud environment (AWS/GCP/Azure) and supports auto-scaling, rolling updates, and zero-downtime deployments.
+![Deployment Diagram](deployment%20diagram.png)
 
 ## 11.2 Infrastructure Components
 ## 🏗️ Deployment Architecture - Infrastructure Components
