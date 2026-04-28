@@ -1,6 +1,6 @@
 <div align="center">
 
-## Group Members (02)
+## Group Members 
 
 | # | Name | Student ID |
 | :---: | :--- | :--- |
