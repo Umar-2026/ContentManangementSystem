@@ -10,7 +10,7 @@
 </div>
 
 # Table of Contents
-- [1. Introduction](#1-introduction)
+- [1. Project Description](#1-project-description)
     - [1.1 Purpose](#11-purpose)
     - [1.2 Scope](#12-scope)
     - [1.3 Definitions & Abbreviations](#13-definitions--abbreviations)
@@ -18,7 +18,7 @@
     - [2.1 System Description](#21-system-description)
     - [2.2 Business Goals](#22-business-goals)
     - [2.3 Stakeholders](#23-stakeholders)
-- [3. Architectural Drivers](#3-architectural-drivers)
+- [3. Architectural View](#3-architectural-drivers)
     - [3.1 Functional Requirements](#31-functional-requirements)
     - [3.2 Non-Functional Requirements (Quality Attributes)](#32-non-functional-requirements-quality-attributes)
 - [4. Key Architectural Decisions](#4-key-architectural-decisions)
