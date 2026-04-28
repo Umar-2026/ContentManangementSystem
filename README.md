@@ -27,7 +27,7 @@
   - [4.5 RBAC Security Model](#45-rbac-security-model)
 - [5. System Context (C4 Level 1)](#5-system-context-c4-level-1)
   - [5.1 Context Description](#51-context-description)
-  - [5.2 External Actors & Systems](#52-external-actors-&-systems) 
+  - [5.2 External Actors & Systems](#52-external-actors-&-Systems) 
 - [10. Security Architecture](#10-security-architecture)
   - [10.1 Security Controls by Layer](#101-security-controls-by-layer)
 - [15. Appendix](#15-appendix)
