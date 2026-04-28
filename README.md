@@ -201,7 +201,7 @@ The System Context diagram shows the CMS as a black box and identifies all exter
 | **Search Engine (Elasticsearch)** | External | Indexes and retrieves full-text content search |
 | **Analytics (Google Analytics)**| External   | Tracks page views, sessions, and conversion events |
 | **Payment Gateway (Stripe)**    | External   | Handles premium plugin/theme subscription payments |
-## 6. Container Architecture (C4 Level 2)
+## 6. Container Architecture
 ### 6.1 Overview
 The Container diagram decomposes the CMS into deployable units (containers). Each container is independently buildable, has a clearly defined responsibility, and communicates via HTTP/REST or message queues.
 ![Container Diagram](container%20diagram.png)
@@ -273,7 +273,7 @@ The theme system uses a template hierarchy to resolve the correct template for a
  
 ## 8. Data Architecture
 ### 8.1 Database Schema (Core Tables)
-## 🗄️ Database Schema - Main Tables
+## Database Schema - Main Tables
 
 | Table                     | Key Columns                                      | Purpose |
 |---------------------------|--------------------------------------------------|---------|
@@ -295,19 +295,19 @@ The theme system uses a template hierarchy to resolve the correct template for a
 •	Database Abstraction: $wpdb-equivalent wrapper allows plugin authors to run parameterized queries safely
 
 ### 8.3 Caching Strategy
-## ⚡ Caching Architecture
+## Caching Architecture
 
 | Cache Type            | Storage                    | TTL / Invalidation Strategy |
 |-----------------------|----------------------------|-----------------------------|
-| **📄 Page Cache**     | Redis + CDN Edge           | Full HTML cache<br>Invalidated when content is saved/updated |
-| **🗃️ Object Cache**   | Redis                      | Cached DB query results<br>TTL: 300 seconds (auto-invalidated on writes) |
-| **⏳ Transients**     | Redis or MySQL             | Temporary plugin data with explicit TTL |
-| **📦 Asset Cache**    | CDN (Cloudflare)           | Static assets (JS, CSS, images)<br>Cache busting via versioned filenames |
-| **🔍 Search Index**   | Elasticsearch              | Near real-time indexing<br>Updated on publish or content change |
+| **Page Cache**     | Redis + CDN Edge           | Full HTML cache<br>Invalidated when content is saved/updated |
+| **Object Cache**   | Redis                      | Cached DB query results<br>TTL: 300 seconds (auto-invalidated on writes) |
+| **Transients**     | Redis or MySQL             | Temporary plugin data with explicit TTL |
+| **Asset Cache**    | CDN (Cloudflare)           | Static assets (JS, CSS, images)<br>Cache busting via versioned filenames |
+| **Search Index**   | Elasticsearch              | Near real-time indexing<br>Updated on publish or content change |
  
 ## 9. API Design
 ### 9.1 REST API Endpoint Summary
-## 🌐 Public & Admin REST API Endpoints
+## Public & Admin REST API Endpoints
 
 | Method | Endpoint                              | Description                                 | Auth Required      |
 |--------|---------------------------------------|---------------------------------------------|--------------------|
@@ -363,7 +363,7 @@ The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The d
 ![Deployment Diagram](deployment%20diagram.png)
 
 ## 11.2 Infrastructure Components
-## 🏗️ Deployment Architecture - Infrastructure Components
+## Deployment Architecture - Infrastructure Components
 
 | Component              | Technology                          | Purpose |
 |------------------------|-------------------------------------|---------|
@@ -436,16 +436,12 @@ A. Diagrams Index
 
 ### 1. System Context Diagram
 ![System Context](system%20context%20diagram.png)
-
 ### 2. Container Diagram
 ![Container Diagram](container%20diagram.png)
-
 ### 3. Component Diagram
 ![Component Diagram](Component%20Diagram.png)
-
 ### 4. Deployment Diagram
 ![Deployment Diagram](deployment%20diagram.png)
-
 ### 5. Security Layers
 ![Security Layers](security%20layers.png)
 
