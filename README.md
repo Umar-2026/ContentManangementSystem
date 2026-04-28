@@ -3,7 +3,7 @@
   - [1.1 Purpose](#11-purpose)
   - [1.2 Scope](#12-scope)
   - [1.3 Definitions & Abbreviations](#13-definitions--abbreviations)
--[2. System Overview](#2-system-overview)
+- [2. System Overview](#2-system-overview)
   - [2.1 System Description](#21-system-description)
   - [2.2 Business Goals](#22-business-goals)
   - [2.3 Stakeholders](#23-stakeholders)
@@ -82,43 +82,51 @@ The platform supports multiple modes of operation: a traditional server-rendered
 •	Deliver a mobile-responsive admin interface
 
 ## 2.3 Stakeholders
-Stakeholder	Role	Interest
-Content Authors	Create and publish content	Easy editor, preview, scheduling
-Site Administrators	Manage site settings, users, plugins	Full control, security, backups
-Plugin Developers	Extend CMS functionality	Stable APIs, hooks, documentation
-Theme Designers	Design site appearance	Template engine, CSS flexibility
-End Users (Visitors)	Consume content	Fast, responsive, accessible pages
-DevOps/Infra Team	Deploy and scale the platform	Containerization, monitoring, CI/CD
-Business Owners	Drive revenue via content	Analytics, SEO, uptime, cost
+## Stakeholders
+
+| Stakeholder              | Role                                      | Interest / Needs                                      |
+|--------------------------|-------------------------------------------|-------------------------------------------------------|
+| **Content Authors**      | Create and publish content                | Easy editor, preview, scheduling                      |
+| **Site Administrators**  | Manage site settings, users, plugins      | Full control, security, backups                       |
+| **Plugin Developers**    | Extend CMS functionality                  | Stable APIs, hooks, documentation                     |
+| **Theme Designers**      | Design site appearance                    | Template engine, CSS flexibility                      |
+| **End Users (Visitors)** | Consume content                           | Fast, responsive, accessible pages                    |
+| **DevOps / Infra Team**  | Deploy and scale the platform             | Containerization, monitoring, CI/CD                   |
+| **Business Owners**      | Drive revenue via content                 | Analytics, SEO, uptime, cost                          |
  
 ## 3. Architectural View
 ### 3.1 Functional Requirements
-ID	Feature	Description
-FR-01	User Authentication	Register, login, logout, password reset via JWT/OAuth
-FR-02	Role & Permission Mgmt	RBAC: Super Admin, Admin, Editor, Author, Subscriber
-FR-03	Content CRUD	Create, edit, delete, version posts, pages, custom types
-FR-04	Rich Text Editor	WYSIWYG block-based editor (Gutenberg-style)
-FR-05	Media Library	Upload, tag, crop, search images/videos/documents
-FR-06	Taxonomy System	Categories, tags, hierarchical custom taxonomies
-FR-07	Theme Engine	Template hierarchy, PHP-like/Twig templates, child themes
-FR-08	Plugin Framework	Hook/filter system, plugin activation/deactivation
-FR-09	REST API	Full CRUD API for all content entities, JWT auth
-FR-10	Search	Full-text content search with filters and facets
-FR-11	Comments System	Threaded comments, moderation, spam filtering
-FR-12	SEO Management	Meta tags, sitemaps, structured data, Open Graph
-FR-13	Content Scheduling	Publish/unpublish at scheduled date/time
-FR-14	Multi-site Support	Single installation serving multiple sites/domains
+## 📋 Functional Requirements
 
+| ID      | Feature                      | Description |
+|---------|------------------------------|-----------|
+| **FR-01** | User Authentication         | Register, login, logout, password reset via JWT/OAuth |
+| **FR-02** | Role & Permission Mgmt      | RBAC: Super Admin, Admin, Editor, Author, Subscriber |
+| **FR-03** | Content CRUD                | Create, edit, delete, version posts, pages, custom types |
+| **FR-04** | Rich Text Editor            | WYSIWYG block-based editor (Gutenberg-style) |
+| **FR-05** | Media Library               | Upload, tag, crop, search images/videos/documents |
+| **FR-06** | Taxonomy System             | Categories, tags, hierarchical custom taxonomies |
+| **FR-07** | Theme Engine                | Template hierarchy, PHP-like/Twig templates, child themes |
+| **FR-08** | Plugin Framework            | Hook/filter system, plugin activation/deactivation |
+| **FR-09** | REST API                    | Full CRUD API for all content entities, JWT auth |
+| **FR-10** | Search                      | Full-text content search with filters and facets |
+| **FR-11** | Comments System             | Threaded comments, moderation, spam filtering |
+| **FR-12** | SEO Management              | Meta tags, sitemaps, structured data, Open Graph |
+| **FR-13** | Content Scheduling          | Publish/unpublish at scheduled date/time |
+| **FR-14** | Multi-site Support          | Single installation serving multiple sites/domains |
 ### 3.2 Non-Functional Requirements (Quality Attributes)
-Attribute	Requirement	Target
-Performance	Page load time	< 2s for front-end pages; < 300ms for API
-Scalability	Concurrent users	10,000+ concurrent; horizontal scaling support
-Availability	Uptime SLA	99.9% uptime (< 8.7 hrs downtime/year)
-Security	Auth & data protection	JWT, HTTPS, OWASP Top 10, CSRF, SQL injection prevention
-Maintainability	Code modularity	Plugin/theme system; < 30 min to add new plugin
-Extensibility	New feature addition	Hook-based plugin API; backward-compatible versioning
-Portability	Deployment targets	Docker-compatible; cloud-agnostic (AWS, GCP, Azure)
-Usability	Admin UX	Responsive admin on mobile; WCAG 2.1 AA accessibility
+## ⚡ Non-Functional Requirements
+
+| Attribute          | Requirement                    | Target |
+|--------------------|--------------------------------|--------|
+| **Performance**   | Page load time                 | < 2s for frontend pages<br>< 300ms for API |
+| **Scalability**   | Concurrent users               | 10,000+ concurrent users with horizontal scaling |
+| **Availability**  | Uptime SLA                     | 99.9% uptime (< 8.7 hours downtime per year) |
+| **Security**      | Authentication & Data Protection | JWT + HTTPS, OWASP Top 10, CSRF & SQL injection protection |
+| **Maintainability** | Code modularity               | Modular plugin/theme system<br>New plugin in < 30 minutes |
+| **Extensibility** | New feature addition           | Hook-based plugin API with backward compatibility |
+| **Portability**   | Deployment targets             | Docker support<br>Cloud-agnostic (AWS, GCP, Azure) |
+| **Usability**     | Admin User Experience          | Fully responsive admin<br>WCAG 2.1 AA accessibility |
  
 # 4. Key Architectural Decisions
 ### 4.1 Architecture Style: Modular Monolith with Plugin Architecture
@@ -146,36 +154,42 @@ The System Context diagram shows the CMS as a black box and identifies all exter
 Note: A full SVG/visual context diagram is provided as a separate diagram artifact alongside this document.
 
 ### 5.2 External Actors & Systems
-Actor / System	Type	Interaction
-Content Author	Human	Creates and manages content via Admin Dashboard
-Site Administrator	Human	Configures plugins, themes, users, settings
-Site Visitor	Human	Reads published content via the public web front-end
-Plugin Developer	Human	Deploys plugins via Plugin Manager or marketplace
-SMTP / Email Service	External	Sends registration, notification, and digest emails
-CDN (Cloudflare)	External	Serves static assets and caches public pages globally
-OAuth Provider (Google)	External	Provides social login / SSO authentication tokens
-Cloud Storage (S3)	External	Stores uploaded media files (images, videos, docs)
-Search Engine (Elasticsearch)	External	Indexes and retrieves full-text content search
-Analytics (Google Analytics)	External	Tracks page views, sessions, and conversion events
-Payment Gateway (Stripe)	External	Handles premium plugin/theme subscription payments
- 
+## 👥 Actors and External Systems
+
+| Actor / System                  | Type       | Interaction |
+|---------------------------------|------------|-------------|
+| **Content Author**              | Human      | Creates and manages content via Admin Dashboard |
+| **Site Administrator**          | Human      | Configures plugins, themes, users, and system settings |
+| **Site Visitor**                | Human      | Reads published content via the public web front-end |
+| **Plugin Developer**            | Human      | Deploys plugins via Plugin Manager or marketplace |
+| **SMTP / Email Service**        | External   | Sends registration, notification, and digest emails |
+| **CDN (Cloudflare)**            | External   | Serves static assets and caches public pages globally |
+| **OAuth Provider (Google)**     | External   | Provides social login / SSO authentication tokens |
+| **Cloud Storage (S3)**          | External   | Stores uploaded media files (images, videos, docs) |
+| **Search Engine (Elasticsearch)** | External | Indexes and retrieves full-text content search |
+| **Analytics (Google Analytics)**| External   | Tracks page views, sessions, and conversion events |
+| **Payment Gateway (Stripe)**    | External   | Handles premium plugin/theme subscription payments |
 ## 6. Container Architecture (C4 Level 2)
 ### 6.1 Overview
 The Container diagram decomposes the CMS into deployable units (containers). Each container is independently buildable, has a clearly defined responsibility, and communicates via HTTP/REST or message queues.
 
 ### 6.2 Container Inventory
 Container	Technology	Port	Responsibility
-Web Front-End	Node.js / Next.js	3000	SSR/CSR public-facing site
-Admin Dashboard	React SPA	3001	Content authoring & site management UI
-CMS Core API Server	PHP/Laravel or Node	8000	Business logic, REST/GraphQL API
-Plugin Runtime	PHP/Node sandbox	Internal	Executes plugin hooks and filters
-Theme Engine	Twig / Blade	Internal	Template rendering for pages
-Job Queue Worker	Redis + Bull / Horizon	Internal	Async: email, indexing, image resize
-Primary Database	MySQL 8.x	3306	Content, users, metadata persistence
-Cache Layer	Redis 7.x	6379	Sessions, object cache, rate limiting
-Search Service	Elasticsearch	9200	Full-text content indexing & search
-File Storage Proxy	MinIO / S3 proxy	9000	Media upload, resizing, serving
-Notification Service	SMTP / SendGrid API	External	Email notifications and newsletters
+## 🏗️ System Architecture - Containers
+
+| Container                  | Technology                  | Port   | Responsibility |
+|----------------------------|-----------------------------|--------|----------------|
+| **Web Front-End**          | Node.js / Next.js           | 3000   | SSR/CSR public-facing website |
+| **Admin Dashboard**        | React SPA                   | 3001   | Content authoring and site management UI |
+| **CMS Core API Server**    | PHP/Laravel or Node.js      | 8000   | Business logic and REST/GraphQL API |
+| **Plugin Runtime**         | PHP/Node sandbox            | Internal | Executes plugin hooks and filters |
+| **Theme Engine**           | Twig / Blade                | Internal | Template rendering for pages and themes |
+| **Job Queue Worker**       | Redis + Bull / Horizon      | Internal | Asynchronous tasks (email, indexing, image processing) |
+| **Primary Database**       | MySQL 8.x                   | 3306   | Persistent storage for content, users, and metadata |
+| **Cache Layer**            | Redis 7.x                   | 6379   | Sessions, object cache, rate limiting |
+| **Search Service**         | Elasticsearch               | 9200   | Full-text content indexing and search |
+| **File Storage Proxy**     | MinIO / S3 proxy            | 9000   | Media upload, resizing, and serving |
+| **Notification Service**   | SMTP / SendGrid API         | External | Email notifications and newsletters |
 
 ### 6.3 Inter-Container Communication
 •	Admin Dashboard → CMS Core API: REST/JSON over HTTPS (JWT-authenticated)
@@ -189,23 +203,26 @@ Notification Service	SMTP / SendGrid API	External	Email notifications and newsle
  
 ### 7. Component Architecture (C4 Level 3)
 ## 7.1 CMS Core API Components
-Component	Responsibility
-AuthController	Handles login, registration, JWT issuance, OAuth callback, password reset
-UserManager	User CRUD, role assignment, capability checks (can_user_do())
-ContentController	Post/page CRUD, status transitions (draft→publish), versioning
-PostTypeRegistry	Registers built-in and custom post types (post, page, attachment, CPT)
-TaxonomyManager	Category/tag CRUD, hierarchical taxonomy traversal
-MediaManager	Upload handling, MIME validation, image resizing, S3 proxy
-PluginLoader	Discovers, validates, activates/deactivates plugins; applies hooks
-HookDispatcher	Implements do_action() / apply_filters() event bus
-ThemeLoader	Resolves template hierarchy, renders via Twig engine
-RouterEngine	URL routing: permalink resolution, rewrite rules
-SearchManager	Query builder for Elasticsearch, faceted search, ranking
-CommentManager	Threaded comment CRUD, moderation queue, spam scoring (Akismet API)
-SettingsManager	Site options CRUD, transients (cached options), multi-site config
-SEOManager	Meta tag injection, sitemap.xml generation, canonical URLs
-SchedulerService	Cron-based content publishing, cleanup jobs, cache warming
-AuditLogger	Records all admin actions to audit_log table for compliance
+## 🔧 Core Components
+
+| Component              | Responsibility |
+|------------------------|--------------|
+| **AuthController**     | Handles login, registration, JWT issuance, OAuth callback, and password reset |
+| **UserManager**        | User CRUD, role assignment, and capability checks (`can_user_do()`) |
+| **ContentController**  | Post/page CRUD, status transitions (draft → publish), and versioning |
+| **PostTypeRegistry**   | Registers built-in and custom post types (post, page, attachment, CPT) |
+| **TaxonomyManager**    | Category/tag CRUD, hierarchical taxonomy traversal |
+| **MediaManager**       | Upload handling, MIME validation, image resizing, and S3 proxy |
+| **PluginLoader**       | Discovers, validates, activates/deactivates plugins and applies hooks |
+| **HookDispatcher**     | Implements `do_action()` / `apply_filters()` event bus |
+| **ThemeLoader**        | Resolves template hierarchy and renders via Twig engine |
+| **RouterEngine**       | URL routing, permalink resolution, and rewrite rules |
+| **SearchManager**      | Query builder for Elasticsearch, faceted search, and ranking |
+| **CommentManager**     | Threaded comment CRUD, moderation queue, and spam scoring |
+| **SettingsManager**    | Site options CRUD, transients, and multi-site configuration |
+| **SEOManager**         | Meta tag injection, sitemap.xml generation, and canonical URLs |
+| **SchedulerService**   | Cron-based content publishing, cleanup jobs, and cache warming |
+| **AuditLogger**        | Records all admin actions to audit_log table for compliance |
 
 ### 7.2 Plugin Architecture Detail
 The plugin system is the cornerstone of extensibility. Plugins interact with core exclusively through the Hook Dispatcher, never via direct coupling:
@@ -226,17 +243,20 @@ The theme system uses a template hierarchy to resolve the correct template for a
  
 ## 8. Data Architecture
 ### 8.1 Database Schema (Core Tables)
-Table	Key Columns	Purpose
-cms_posts	ID, post_author, post_date, post_content, post_title, post_status, post_type, post_name, post_parent	All content entities (posts, pages, media, revisions)
-cms_postmeta	meta_id, post_id, meta_key, meta_value	EAV extension for post metadata (custom fields)
-cms_users	ID, user_login, user_pass, user_email, user_registered, display_name	All registered users
-cms_usermeta	umeta_id, user_id, meta_key, meta_value	User metadata and role capability serialization
-cms_terms	term_id, name, slug, term_group	Category/tag term definitions
-cms_term_taxonomy	term_taxonomy_id, term_id, taxonomy, parent, count	Links terms to taxonomies (category, tag, etc.)
-cms_term_relationships	object_id, term_taxonomy_id, term_order	Many-to-many: posts ↔ terms
-cms_comments	comment_ID, comment_post_ID, comment_author, comment_content, comment_parent, comment_approved	Threaded comments on posts
-cms_options	option_id, option_name, option_value, autoload	Site configuration key-value store
-cms_links	link_id, link_url, link_name, link_category	Blogroll/link management
+## 🗄️ Database Schema - Main Tables
+
+| Table                     | Key Columns                                      | Purpose |
+|---------------------------|--------------------------------------------------|---------|
+| **cms_posts**             | `ID`, `post_author`, `post_date`, `post_content`, `post_title`, `post_status`, `post_type`, `post_name`, `post_parent` | Core table for all content entities (posts, pages, media, revisions, custom post types) |
+| **cms_postmeta**          | `meta_id`, `post_id`, `meta_key`, `meta_value`   | EAV (Entity-Attribute-Value) storage for custom fields and post metadata |
+| **cms_users**             | `ID`, `user_login`, `user_pass`, `user_email`, `user_registered`, `display_name` | Stores all registered users |
+| **cms_usermeta**          | `umeta_id`, `user_id`, `meta_key`, `meta_value`  | User metadata and serialized role/capability data |
+| **cms_terms**             | `term_id`, `name`, `slug`, `term_group`          | Base definitions for categories, tags, and custom terms |
+| **cms_term_taxonomy**     | `term_taxonomy_id`, `term_id`, `taxonomy`, `parent`, `count` | Links terms to specific taxonomies and supports hierarchy |
+| **cms_term_relationships**| `object_id`, `term_taxonomy_id`, `term_order`    | Many-to-many relationship between posts and terms |
+| **cms_comments**          | `comment_ID`, `comment_post_ID`, `comment_author`, `comment_content`, `comment_parent`, `comment_approved` | Threaded comments system |
+| **cms_options**           | `option_id`, `option_name`, `option_value`, `autoload` | Site-wide configuration and settings (key-value store) |
+| **cms_links**             | `link_id`, `link_url`, `link_name`, `link_category` | Blogroll / external link management |
 
 ### 8.2 Data Access Patterns
 •	ORM Layer: All DB access through an Active Record / Query Builder abstraction (no raw SQL in business logic)
@@ -245,31 +265,36 @@ cms_links	link_id, link_url, link_name, link_category	Blogroll/link management
 •	Database Abstraction: $wpdb-equivalent wrapper allows plugin authors to run parameterized queries safely
 
 ### 8.3 Caching Strategy
-Cache Type	Storage	TTL / Strategy
-Page Cache	Redis / CDN edge	Full rendered HTML; invalidated on content save
-Object Cache	Redis	DB query results; TTL 300s; invalidated on write
-Transients	Redis or MySQL	Plugin-managed; explicit TTL per transient
-Asset Cache	CDN (Cloudflare)	JS/CSS/images; versioned filenames for cache busting
-Search Index	Elasticsearch	Near-real-time; updated on content publish/update
+## ⚡ Caching Architecture
+
+| Cache Type            | Storage                    | TTL / Invalidation Strategy |
+|-----------------------|----------------------------|-----------------------------|
+| **📄 Page Cache**     | Redis + CDN Edge           | Full HTML cache<br>Invalidated when content is saved/updated |
+| **🗃️ Object Cache**   | Redis                      | Cached DB query results<br>TTL: 300 seconds (auto-invalidated on writes) |
+| **⏳ Transients**     | Redis or MySQL             | Temporary plugin data with explicit TTL |
+| **📦 Asset Cache**    | CDN (Cloudflare)           | Static assets (JS, CSS, images)<br>Cache busting via versioned filenames |
+| **🔍 Search Index**   | Elasticsearch              | Near real-time indexing<br>Updated on publish or content change |
  
 ## 9. API Design
 ### 9.1 REST API Endpoint Summary
-Method	Endpoint	Description	Auth Required
-POST	/api/v1/auth/register	User registration	No
-POST	/api/v1/auth/login	Login → JWT token	No
-GET	/api/v1/posts	List published posts	No
-POST	/api/v1/posts	Create new post	Author+
-GET	/api/v1/posts/{id}	Get post by ID	No (if published)
-PUT	/api/v1/posts/{id}	Update post	Author+
-DELETE	/api/v1/posts/{id}	Delete post	Editor+
-GET	/api/v1/media	List media library	Author+
-POST	/api/v1/media/upload	Upload file to S3	Author+
-GET	/api/v1/categories	List all categories	No
-GET	/api/v1/search?q={term}	Full-text search	No
-GET	/api/v1/users/me	Current user profile	JWT
-GET	/api/v1/plugins	List installed plugins	Admin
-POST	/api/v1/plugins/{id}/activate	Activate a plugin	Admin
+## 🌐 Public & Admin REST API Endpoints
 
+| Method | Endpoint                              | Description                                 | Auth Required      |
+|--------|---------------------------------------|---------------------------------------------|--------------------|
+| **POST**   | `/api/v1/auth/register`               | User registration                           | No                 |
+| **POST**   | `/api/v1/auth/login`                  | Login → returns JWT token                   | No                 |
+| **GET**    | `/api/v1/posts`                       | List all published posts                    | No                 |
+| **POST**   | `/api/v1/posts`                       | Create new post                             | Author+            |
+| **GET**    | `/api/v1/posts/{id}`                  | Get single post by ID                       | No (if published)  |
+| **PUT**    | `/api/v1/posts/{id}`                  | Update post                                 | Author+            |
+| **DELETE** | `/api/v1/posts/{id}`                  | Delete post                                 | Editor+            |
+| **GET**    | `/api/v1/media`                       | List media files                            | Author+            |
+| **POST**   | `/api/v1/media/upload`                | Upload new media file                       | Author+            |
+| **GET**    | `/api/v1/categories`                  | List all categories                         | No                 |
+| **GET**    | `/api/v1/search?q={term}`             | Full-text search with query                 | No                 |
+| **GET**    | `/api/v1/users/me`                    | Get current authenticated user profile      | JWT Required       |
+| **GET**    | `/api/v1/plugins`                     | List installed plugins                      | Admin              |
+| **POST**   | `/api/v1/plugins/{id}/activate`       | Activate a plugin                           | Admin              |
 ## 9.2 API Authentication Flow
 •	Client POSTs credentials to /api/v1/auth/login
 •	Server validates credentials, issues Access Token (15 min) and Refresh Token (7 days)
@@ -280,15 +305,17 @@ POST	/api/v1/plugins/{id}/activate	Activate a plugin	Admin
  
 ## 10. Security Architecture
 ### 10.1 Security Controls by Layer
-Layer	Threat	Control
-Network	DDoS, MITM	WAF (Cloudflare), TLS 1.3 everywhere, rate limiting
-Authentication	Credential theft, brute force	bcrypt passwords, JWT, MFA, account lockout after 5 failures
-Authorization	Privilege escalation	RBAC capability checks on every API route; nonce validation for forms
-Input Validation	XSS, SQL Injection	Input sanitization (strip_tags, htmlspecialchars), ORM parameterized queries
-CSRF	Cross-site request forgery	Double-submit cookie pattern; nonce tokens on all state-changing forms
-File Uploads	Malware, path traversal	MIME type validation, randomized filenames, quarantine scan, S3 isolation
-Data at Rest	Database breach	AES-256 encryption for PII fields; encrypted backups
-Audit	Insider threats	Audit log for all admin actions with user, IP, timestamp
+
+| Layer              | Threat                        | Control |
+|--------------------|-------------------------------|---------|
+| **Network**        | DDoS, MITM                    | WAF (Cloudflare), TLS 1.3 enforced everywhere, rate limiting |
+| **Authentication** | Credential theft, brute force | bcrypt password hashing, JWT tokens, MFA support, account lockout after 5 failed attempts |
+| **Authorization**  | Privilege escalation          | RBAC capability checks on every API route, nonce validation for forms |
+| **Input Validation** | XSS, SQL Injection           | Input sanitization (`strip_tags`, `htmlspecialchars`), ORM parameterized queries |
+| **CSRF**           | Cross-site request forgery    | Double-submit cookie pattern + nonce tokens on all state-changing forms |
+| **File Uploads**   | Malware, path traversal       | MIME type validation, randomized filenames, quarantine scanning, S3 bucket isolation |
+| **Data at Rest**   | Database breach               | AES-256 encryption for sensitive PII fields, encrypted backups |
+| **Audit**          | Insider threats               | Comprehensive audit logging for all admin actions (user, IP, timestamp, action) |
 
 ### 10.2 OWASP Compliance Mapping
 •	A01 Broken Access Control → RBAC enforcement + capability matrix
@@ -304,18 +331,21 @@ Audit	Insider threats	Audit log for all admin actions with user, IP, timestamp
 The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The deployment targets a cloud environment (AWS/GCP/Azure) and supports auto-scaling, rolling updates, and zero-downtime deployments.
 
 ## 11.2 Infrastructure Components
-Component	Technology	Purpose
-Load Balancer	AWS ALB / Nginx Ingress	Distribute traffic across API pods; SSL termination
-API Pods	Docker + K8s Deployment	CMS Core API; HPA for auto-scaling (min 2, max 20)
-Web Front-End Pods	Docker + K8s Deployment	Next.js SSR pods; CDN pass-through for static assets
-Worker Pods	Docker + K8s Job/CronJob	Queue workers for email, indexing, scheduled posts
-Primary DB	AWS RDS MySQL (Multi-AZ)	Primary write; automated failover to standby
-Read Replica	AWS RDS Read Replica	Offload read traffic; reporting queries
-Cache Cluster	AWS ElastiCache (Redis)	Shared object/session cache across pods
-Search Cluster	AWS OpenSearch / Elastic Cloud	3-node cluster for HA full-text search
-Object Storage	AWS S3 + CloudFront	Media files; CDN-distributed worldwide
-Container Registry	AWS ECR / Docker Hub	Stores versioned Docker images for all services
-Secrets Management	AWS Secrets Manager / Vault	Stores DB credentials, API keys, JWT secrets
+## 🏗️ Deployment Architecture - Infrastructure Components
+
+| Component              | Technology                          | Purpose |
+|------------------------|-------------------------------------|---------|
+| **Load Balancer**      | AWS ALB / Nginx Ingress             | Distribute traffic across API pods, SSL termination |
+| **API Pods**           | Docker + Kubernetes Deployment      | CMS Core API server with Horizontal Pod Autoscaler (min 2, max 20) |
+| **Web Front-End Pods** | Docker + Kubernetes Deployment      | Next.js SSR application; static assets served via CDN |
+| **Worker Pods**        | Docker + Kubernetes Job / CronJob   | Background workers for email, search indexing, and scheduled tasks |
+| **Primary DB**         | AWS RDS MySQL (Multi-AZ)            | Primary database with automated failover |
+| **Read Replica**       | AWS RDS Read Replica                | Offload read-heavy queries and reporting |
+| **Cache Cluster**      | AWS ElastiCache (Redis)             | Shared object cache and session storage across all pods |
+| **Search Cluster**     | AWS OpenSearch / Elastic Cloud      | High-availability full-text search cluster (3 nodes) |
+| **Object Storage**     | AWS S3 + CloudFront                 | Scalable media storage with global CDN distribution |
+| **Container Registry** | AWS ECR / Docker Hub                | Stores versioned Docker images for all services |
+| **Secrets Management** | AWS Secrets Manager / HashiCorp Vault | Secure storage of database credentials, API keys, and JWT secrets |
 
 ### 11.3 CI/CD Pipeline
 •	Source Control: GitHub (feature branch → PR → main)
