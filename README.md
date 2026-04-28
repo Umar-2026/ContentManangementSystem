@@ -1,3 +1,9 @@
+## 👥 Group Members (02)
+
+| # | Name | Student ID |
+| :--- | :--- | :--- |
+| 01 | **Umar Ajaib** | 2025272110001 |
+| 02 | **Aqsa Fakhar Uddinn** | 2025272110002 |
 # Table of Contents
 -[1. Project Description](#1-project-description)
   - [1.1 Purpose](#11-purpose)
@@ -356,42 +362,48 @@ The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The d
 •	DB Migrations: Flyway/Liquibase migrations run as K8s Job pre-deployment
  
 ## 12. Architecture Quality Scenarios
-Attribute	Stimulus	Environment	Response (Target)
-Performance	10,000 concurrent users	Normal load	P95 API response < 300ms; page load < 2s via CDN cache
-Scalability	5× traffic spike (launch day)	Peak load	HPA scales API pods from 4 to 20; no downtime, same P95
-Availability	Database primary failure	Fault condition	RDS Multi-AZ failover completes in < 60s; requests queued in Redis
-Security	SQL injection attempt	Normal operation	ORM blocks query; WAF logs and blocks source IP; no data exposed
-Extensibility	New plugin installed	Admin action	Plugin activates in < 5s; no CMS restart required; hook system extends behavior
-Maintainability	Core version update	Maintenance window	Rolling update with zero downtime; plugins backward-compatible via versioned hooks
-Recoverability	Data corruption event	Disaster recovery	Point-in-time restore from RDS backup in < 15 min; RPO < 1 hour
- 
+## Quality Attributes & System Requirements
+| Attribute | Stimulus | Environment | Response (Target) |
+| :--- | :--- | :--- | :--- |
+| **Performance** | 10,000 concurrent users | Normal load | P95 API response < 300ms; page load < 2s via CDN cache |
+| **Scalability** | 5× traffic spike (launch day) | Peak load | HPA scales API pods from 4 to 20; no downtime, same P95 |
+| **Availability** | Database primary failure | Fault condition | RDS Multi-AZ failover < 60s; requests queued in Redis |
+| **Security** | SQL injection attempt | Normal operation | ORM blocks query; WAF logs & blocks source IP; no data exposed |
+| **Extensibility** | New plugin installed | Admin action | Plugin activates in < 5s; no CMS restart; hook system extends behavior |
+| **Maintainability** | Core version update | Maintenance window | Rolling update with zero downtime; plugins backward-compatible |
+| **Recoverability** | Data corruption event | Disaster recovery | Point-in-time restore from RDS < 15 min; RPO < 1 hour |
 ## 13. Technology Stack
-Layer	Technology	Rationale
-Backend API	PHP 8.2 + Laravel 11 (or Node.js + Express)	Proven CMS ecosystem; mature ORM; plugin ecosystem
-Front-End (Public)	Next.js 14 (React)	SSR/SSG for SEO; streaming; ISR for performance
-Admin UI	React 18 + TypeScript + Vite	Component-based; fast HMR; accessible UI libraries
-Template Engine	Twig 3.x (PHP) / Nunjucks (Node)	Safe, sandboxed templating for theme developers
-Primary Database	MySQL 8.x	Battle-tested for CMS workloads; JSON column support
-Caching	Redis 7.x	Sub-millisecond object cache; pub/sub for invalidation
-Search	Elasticsearch 8.x	Full-text search; BM25 ranking; plugin facets
-File Storage	AWS S3 + CloudFront CDN	Infinitely scalable; edge distribution worldwide
-Queue	Redis + Bull (Node) / Laravel Horizon	Reliable async job processing with retries
-Auth	JWT + Passport.js / Laravel Sanctum	Stateless; works for API and session modes
-Container	Docker + Kubernetes (EKS)	Portable, scalable, cloud-native deployment
-CI/CD	GitHub Actions + ArgoCD	GitOps workflow; automated test and deploy
-Monitoring	Prometheus + Grafana + Sentry	Metrics, dashboards, error tracking
-Logging	ELK Stack (Elasticsearch, Logstash, Kibana)	Centralized structured log search
+## 🛠️ Technology Stack & Rationale
+
+| Layer | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Backend API** | PHP 8.2 + Laravel 11 (or Node.js + Express) | Proven CMS ecosystem; mature ORM; plugin ecosystem |
+| **Front-End (Public)** | Next.js 14 (React) | SSR/SSG for SEO; streaming; ISR for performance |
+| **Admin UI** | React 18 + TypeScript + Vite | Component-based; fast HMR; accessible UI libraries |
+| **Template Engine** | Twig 3.x (PHP) / Nunjucks (Node) | Safe, sandboxed templating for theme developers |
+| **Primary Database** | MySQL 8.x | Battle-tested for CMS workloads; JSON column support |
+| **Caching** | Redis 7.x | Sub-millisecond object cache; pub/sub for invalidation |
+| **Search** | Elasticsearch 8.x | Full-text search; BM25 ranking; plugin facets |
+| **File Storage** | AWS S3 + CloudFront CDN | Infinitely scalable; edge distribution worldwide |
+| **Queue** | Redis + Bull (Node) / Laravel Horizon | Reliable async job processing with retries |
+| **Auth** | JWT + Passport.js / Laravel Sanctum | Stateless; works for API and session modes |
+| **Container** | Docker + Kubernetes (EKS) | Portable, scalable, cloud-native deployment |
+| **CI/CD** | GitHub Actions + ArgoCD | GitOps workflow; automated test and deploy |
+| **Monitoring** | Prometheus + Grafana + Sentry | Metrics, dashboards, error tracking |
+| **Logging** | ELK Stack (Elasticsearch, Logstash, Kibana) | Centralized structured log search |
  
 ## 14. Risks & Mitigations
-Risk	Severity	Mitigation
-Plugin conflicts breaking core stability	High	Plugin versioning API; isolated sandbox execution; automated compatibility tests
-Database single point of failure	High	RDS Multi-AZ; read replicas; automated failover; tested restore procedures
-DDoS attack overwhelming the platform	High	Cloudflare WAF + rate limiting; auto-scaling; CDN absorbs edge traffic
-SQL Injection via plugin code	Medium	ORM enforced for all DB queries; security code review for plugins; WAF
-Theme developer XSS injection	Medium	Twig auto-escaping; Content Security Policy headers; output sanitization
-Media storage costs explosion	Low	S3 lifecycle policies; image optimization before storage; storage quotas per site
-Search index out of sync with DB	Medium	Transactional outbox pattern; index reconciliation cron job; dead letter queue
- 
+## 🛡️ Risk Management & Mitigation
+
+| Risk | Severity | Mitigation |
+| :--- | :--- | :--- |
+| **Plugin conflicts breaking core stability** | High | Plugin versioning API; isolated sandbox execution; automated compatibility tests |
+| **Database single point of failure** | High | RDS Multi-AZ; read replicas; automated failover; tested restore procedures |
+| **DDoS attack overwhelming platform** | High | Cloudflare WAF + rate limiting; auto-scaling; CDN absorbs edge traffic |
+| **SQL Injection via plugin code** | Medium | ORM enforced for all DB queries; security code review for plugins; WAF |
+| **Theme developer XSS injection** | Medium | Twig auto-escaping; Content Security Policy (CSP) headers; output sanitization |
+| **Media storage costs explosion** | Low | S3 lifecycle policies; image optimization before storage; quotas per site |
+| **Search index out of sync with DB** | Medium | Transactional outbox pattern; index reconciliation cron; dead letter queue |
 ## 15. Appendix
 A. Diagrams Index
 •	Figure 1: System Context Diagram (C4 Level 1) 
