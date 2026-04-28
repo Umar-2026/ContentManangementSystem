@@ -51,19 +51,22 @@ Admin dashboard for system configuration and management
 SEO tools, analytics integration, and media library management
 
 ### 1.3 Definitions & Abbreviations
-Term / Acronym	Definition
-CMS	Content Management System
-API	Application Programming Interface
-REST	Representational State Transfer
-CDN	Content Delivery Network
-MVC	Model-View-Controller design pattern
-ORM	Object Relational Mapper
-JWT	JSON Web Token for stateless auth
-WYSIWYG	What You See Is What You Get (editor)
-RBAC	Role-Based Access Control
-SaaS	Software as a Service
-SSR	Server-Side Rendering
-CSR	Client-Side Rendering
+## Terms and Acronyms
+
+| Term / Acronym | Definition |
+|----------------|------------|
+| CMS            | Content Management System |
+| API            | Application Programming Interface |
+| REST           | Representational State Transfer |
+| CDN            | Content Delivery Network |
+| MVC            | Model-View-Controller design pattern |
+| ORM            | Object Relational Mapper |
+| JWT            | JSON Web Token for stateless auth |
+| WYSIWYG        | What You See Is What You Get (editor) |
+| RBAC           | Role-Based Access Control |
+| SaaS           | Software as a Service |
+| SSR            | Server-Side Rendering |
+| CSR            | Client-Side Rendering |
  
 ### 2. System Overview
 ### 2.1 System Description
