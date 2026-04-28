@@ -27,14 +27,14 @@
     - [4.3 Template/Theme Engine](#43-templatetheme-engine)
     - [4.4 Dual-Mode API (Traditional + Headless)](#44-dual-mode-api-traditional--headless)
     - [4.5 RBAC Security Model](#45-rbac-security-model)
-- [5. System Context (C4 Level 1)](#5-system-context-c4-level-1)
+- [5. System Context](#5-system-context)
     - [5.1 Context Description](#51-context-description)
     - [5.2 External Actors & Systems](#52-external-actors--systems)
-- [6. Container Architecture (C4 Level 2)](#6-container-architecture-c4-level-2)
+- [6. Container Architecture](#6-container-architecture)
     - [6.1 Overview](#61-overview)
     - [6.2 Container Inventory](#62-container-inventory)
     - [6.3 Inter-Container Communication](#63-inter-container-communication)
-- [7. Component Architecture (C4 Level 3)](#7-component-architecture-c4-level-3)
+- [7. Component Architecture](#7-component-architecture)
     - [7.1 CMS Core API Components](#71-cms-core-api-components)
     - [7.2 Plugin Architecture Detail](#72-plugin-architecture-detail)
     - [7.3 Theme Architecture Detail](#73-theme-architecture-detail)
@@ -181,15 +181,12 @@ The system natively supports both server-rendered HTML (for SEO) and a JSON REST
 ### 4.5 RBAC Security Model
 Role-Based Access Control with five built-in roles: Super Admin, Admin, Editor, Author, Subscriber. Permissions are additive and stored in a capability matrix, extensible by plugins.
  
-## 5. System Context (C4 Level 1)
+## 5. System Context
 ### 5.1 Context Description
 The System Context diagram shows the CMS as a black box and identifies all external users and systems that interact with it. The CMS sits at the center, interacting with human users (authors, visitors, admins) and external systems (email, CDN, third-party auth, payment, analytics).
 ![System Context](system%20context%20diagram.png)
 
-Note: A full SVG/visual context diagram is provided as a separate diagram artifact alongside this document.
-
 ### 5.2 External Actors & Systems
-## 👥 Actors and External Systems
 
 | Actor / System                  | Type       | Interaction |
 |---------------------------------|------------|-------------|
@@ -209,8 +206,6 @@ Note: A full SVG/visual context diagram is provided as a separate diagram artifa
 The Container diagram decomposes the CMS into deployable units (containers). Each container is independently buildable, has a clearly defined responsibility, and communicates via HTTP/REST or message queues.
 ![Container Diagram](container%20diagram.png)
 ### 6.2 Container Inventory
-Container	Technology	Port	Responsibility
-## 🏗️ System Architecture - Containers
 
 | Container                  | Technology                  | Port   | Responsibility |
 |----------------------------|-----------------------------|--------|----------------|
@@ -236,10 +231,9 @@ Container	Technology	Port	Responsibility
 •	Job Queue Worker → Notification Service: Sends emails via SMTP/SendGrid
 •	Web Front-End → CDN: Static assets served via CDN edge nodes
  
-### 7. Component Architecture (C4 Level 3)
+### 7. Component Architecture 
 ![Component Diagram](Component%20Diagram.png)
 ## 7.1 CMS Core API Components
-## 🔧 Core Components
 
 | Component              | Responsibility |
 |------------------------|--------------|
@@ -438,12 +432,22 @@ The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The d
 | **Search index out of sync with DB** | Medium | Transactional outbox pattern; index reconciliation cron; dead letter queue |
 ## 15. Appendix
 A. Diagrams Index
-•	Figure 1: System Context Diagram (C4 Level 1) 
-•	Figure 2: Container Diagram (C4 Level 2)
-•	Figure 3: Component Diagram (C4 Level 3)
-•	Figure 4: Deployment Architecture Diagram 
-•	Figure 5: Database Entity Relationship Diagram
-•	Figure 6: Security Architecture Layer Diagram 
+# CMS Architecture Diagrams
+
+### 1. System Context Diagram
+![System Context](system%20context%20diagram.png)
+
+### 2. Container Diagram
+![Container Diagram](container%20diagram.png)
+
+### 3. Component Diagram
+![Component Diagram](Component%20Diagram.png)
+
+### 4. Deployment Diagram
+![Deployment Diagram](deployment%20diagram.png)
+
+### 5. Security Layers
+![Security Layers](security%20layers.png)
 
 
 
