@@ -10,7 +10,7 @@
 </div>
 
 # Table of Contents
--[1. Project Description](#1-project-description)
+- [1. Project Description](#1-project-description)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Scope](#12-scope)
   - [1.3 Definitions & Abbreviations](#13-definitions--abbreviations)
@@ -18,14 +18,14 @@
   - [2.1 System Description](#21-system-description)
   - [2.2 Business Goals](#22-business-goals)
   - [2.3 Stakeholders](#23-stakeholders)
--[3. Architectural View](#3-architectural-view)
+- [3. Architectural View](#3-architectural-view)
   - [3.1 Functional Requirements](#31-functional-requirements)
   - [3.2 Non-Functional Requirements (Quality Attributes)](#32-non-functional-requirements-quality-attributes)
--[4. Key Architectural Decisions](#4-key-architectural-decisions)
+- [4. Key Architectural Decisions](#4-key-architectural-decisions)
   - [4.1 Architecture Style: Modular Monolith with Plugin Architecture](#41-architecture-style-modular-monolith-with-plugin-architecture)
   - [4.2 Plugin Hook System (Observer Pattern)](#42-plugin-hook-system-observer-pattern)
   - [4.5 RBAC Security Model](#45-rbac-security-model)
--[5. System Context (C4 Level 1)](#5-system-context-c4-level-1)
+- [5. System Context (C4 Level 1)](#5-system-context-c4-level-1)
   - [5.1 Context Description](#51-context-description)
 - [10. Security Architecture](#10-security-architecture)
   - [10.1 Security Controls by Layer](#101-security-controls-by-layer)
