@@ -4,6 +4,16 @@
 | :--- | :--- | :--- |
 | 01 | **Umar Ajaib** | 2025272110001 |
 | 02 | **Aqsa Fakhar Uddinn** | 2025272110002 |
+<div align="center">
+
+## 👥 Group Members (02)
+
+| # | Name | Student ID |
+| :---: | :--- | :--- |
+| 01 | **Umar Ajaib** | 2025272110001 |
+| 02 | **Aqsa Fakhar Uddinn** | 2025272110002 |
+
+</div>
 # Table of Contents
 -[1. Project Description](#1-project-description)
   - [1.1 Purpose](#11-purpose)
