@@ -1,9 +1,3 @@
-## 👥 Group Members (02)
-
-| # | Name | Student ID |
-| :--- | :--- | :--- |
-| 01 | **Umar Ajaib** | 2025272110001 |
-| 02 | **Aqsa Fakhar Uddinn** | 2025272110002 |
 <div align="center">
 
 ## 👥 Group Members (02)
