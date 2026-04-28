@@ -89,7 +89,6 @@ Admin dashboard for system configuration and management
 SEO tools, analytics integration, and media library management
 
 ### 1.3 Definitions & Abbreviations
-## Terms and Acronyms
 
 | Term / Acronym | Definition |
 |----------------|------------|
@@ -120,7 +119,6 @@ The platform supports multiple modes of operation: a traditional server-rendered
 •	Deliver a mobile-responsive admin interface
 
 ## 2.3 Stakeholders
-## Stakeholders
 
 | Stakeholder              | Role                                      | Interest / Needs                                      |
 |--------------------------|-------------------------------------------|-------------------------------------------------------|
@@ -134,7 +132,6 @@ The platform supports multiple modes of operation: a traditional server-rendered
  
 ## 3. Architectural View
 ### 3.1 Functional Requirements
-## 📋 Functional Requirements
 
 | ID      | Feature                      | Description |
 |---------|------------------------------|-----------|
@@ -153,7 +150,6 @@ The platform supports multiple modes of operation: a traditional server-rendered
 | **FR-13** | Content Scheduling          | Publish/unpublish at scheduled date/time |
 | **FR-14** | Multi-site Support          | Single installation serving multiple sites/domains |
 ### 3.2 Non-Functional Requirements (Quality Attributes)
-## ⚡ Non-Functional Requirements
 
 | Attribute          | Requirement                    | Target |
 |--------------------|--------------------------------|--------|
@@ -188,6 +184,7 @@ Role-Based Access Control with five built-in roles: Super Admin, Admin, Editor, 
 ## 5. System Context (C4 Level 1)
 ### 5.1 Context Description
 The System Context diagram shows the CMS as a black box and identifies all external users and systems that interact with it. The CMS sits at the center, interacting with human users (authors, visitors, admins) and external systems (email, CDN, third-party auth, payment, analytics).
+![Architecture Diagram](https://github.com/Umar-2026/ContentManangementSystem/blob/main/container%20diagram.png)https://github.com/Umar-2026/ContentManangementSystem/blob/main/container%20diagram.png
 
 Note: A full SVG/visual context diagram is provided as a separate diagram artifact alongside this document.
 
