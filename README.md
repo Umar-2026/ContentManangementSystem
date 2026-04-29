@@ -273,7 +273,7 @@ The theme system uses a template hierarchy to resolve the correct template for a
  
 ## 8. Data Architecture
 ### 8.1 Database Schema (Core Tables)
-## Database Schema - Main Tables
+### Database Schema - Main Tables
 
 | Table                     | Key Columns                                      | Purpose |
 |---------------------------|--------------------------------------------------|---------|
@@ -294,8 +294,8 @@ The theme system uses a template hierarchy to resolve the correct template for a
 •	Transients: Time-limited cached computation results stored in cms_options or Redis
 •	Database Abstraction: $wpdb-equivalent wrapper allows plugin authors to run parameterized queries safely
 
-### 8.3 Caching Strategy
-## Caching Architecture
+## 8.3 Caching Strategy
+### Caching Architecture
 
 | Cache Type            | Storage                    | TTL / Invalidation Strategy |
 |-----------------------|----------------------------|-----------------------------|
@@ -307,7 +307,7 @@ The theme system uses a template hierarchy to resolve the correct template for a
  
 ## 9. API Design
 ### 9.1 REST API Endpoint Summary
-## Public & Admin REST API Endpoints
+### Public & Admin REST API Endpoints
 
 | Method | Endpoint                              | Description                                 | Auth Required      |
 |--------|---------------------------------------|---------------------------------------------|--------------------|
@@ -430,20 +430,6 @@ The CMS is packaged as Docker containers orchestrated by Kubernetes (K8s). The d
 | **Theme developer XSS injection** | Medium | Twig auto-escaping; Content Security Policy (CSP) headers; output sanitization |
 | **Media storage costs explosion** | Low | S3 lifecycle policies; image optimization before storage; quotas per site |
 | **Search index out of sync with DB** | Medium | Transactional outbox pattern; index reconciliation cron; dead letter queue |
-## 15. Appendix
-A. Diagrams Index
-# CMS Architecture Diagrams
-
-### 1. System Context Diagram
-![System Context](system%20context%20diagram.png)
-### 2. Container Diagram
-![Container Diagram](container%20diagram.png)
-### 3. Component Diagram
-![Component Diagram](Component%20Diagram.png)
-### 4. Deployment Diagram
-![Deployment Diagram](deployment%20diagram.png)
-### 5. Security Layers
-![Security Layers](security%20layers.png)
 
 
 
