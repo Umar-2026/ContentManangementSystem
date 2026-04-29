@@ -231,9 +231,9 @@ The Container diagram decomposes the CMS into deployable units (containers). Eac
 •	Job Queue Worker → Notification Service: Sends emails via SMTP/SendGrid
 •	Web Front-End → CDN: Static assets served via CDN edge nodes
  
-### 7. Component Architecture 
+## 7. Component Architecture 
 ![Component Diagram](Component%20Diagram.png)
-## 7.1 CMS Core API Components
+### 7.1 CMS Core API Components
 
 | Component              | Responsibility |
 |------------------------|--------------|
