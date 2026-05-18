@@ -12,7 +12,7 @@
 # Table of Contents
 - [1. Project Description](#1-project-description)
 - [2 Futures](#2-futures)
-- [2. System Overview](#2-system-overview)
+- [3. System Overview](#3-system-overview)
     - [2.1 System Description](#21-system-description)
     - [2.2 Business Goals](#22-business-goals)
     - [2.3 Stakeholders](#23-stakeholders)
@@ -54,11 +54,11 @@
 - [13. Technology Stack](#13-technology-stack)
 - [14. Risks & Mitigations](#14-risks--mitigations)
 ## 1. Project Description	
-This project is based on 'WordPress, a Content Management System (CMS) used to create, manage, and publish website content easily without requiring advanced programming knowledge.
-
-The system allows users to manage posts, pages, media, and users through a web-based dashboard. It supports multiple user roles such as administrator, editor, author, and subscriber, each having different access levels and permissions.
-
-The platform is highly extensible through themes and plugins, allowing customization of website design and functionality without modifying the core system. It is suitable for blogs, business websites, and dynamic web applications.
+This project is based on WordPress, which is a Content Management System (CMS) designed to help users create, manage, and publish website content easily without requiring advanced programming skills. 
+It provides a web-based dashboard where users can handle different types of content such as posts, pages, and media files including images and videos. 
+The system also includes user management features with different roles such as administrator, editor, author, and subscriber, where each role has specific permissions and access levels to ensure security and proper workflow. WordPress is highly flexible and customizable due to its wide range of themes and plugins. 
+Themes allow users to change the design and layout of a website, while plugins add extra functionality such as contact forms, SEO tools, and e-commerce features. 
+Because of its simplicity and extensibility, WordPress is widely used for developing blogs, business websites, and dynamic web applications, making it a powerful solution for modern web development needs.
 ## 2 Futures
 - **Customer/User Interface:**
    - Browse website content (posts/pages)
@@ -82,30 +82,8 @@ The platform is highly extensible through themes and plugins, allowing customiza
 The WordPress system provides an easy-to-use platform for building and managing websites without technical complexity. It reduces development time and cost while offering high flexibility through themes and plugins.
 
 It supports scalability, allowing users to expand website functionality as needed. Its large community support and open-source nature make it a reliable and widely used CMS solution.
-### 2. System Overview
-### 2.1 System Description
-The CMS is a full-featured, extensible web-based platform that enables non-technical users to create, edit, organize, and publish digital content make website, blog or post . Inspired by WordPress, the system follows a plugin-based monolithic-to-microservices evolution path — starting with a modular monolith and providing clean API boundaries for future service extraction.
-
-The platform supports multiple modes of operation: a traditional server-rendered front-end for SEO-critical use cases, and a headless API mode for decoupled front-end frameworks (React, Vue, mobile apps).
-
-### 2.2 Business Goals
-•	Enable rapid content creation and publishing with zero coding requirement
-•	Support 10,000+ concurrent users with sub-2-second page load times
-•	Provide a plugin marketplace allowing third-party feature extensions
-•	Ensure enterprise-grade security and GDPR compliance
-•	Deliver a mobile-responsive admin interface
-
-## 2.3 Stakeholders
-
-| Stakeholder              | Role                                      | Interest / Needs                                      |
-|--------------------------|-------------------------------------------|-------------------------------------------------------|
-| **Content Authors**      | Create and publish content                | Easy editor, preview, scheduling                      |
-| **Site Administrators**  | Manage site settings, users, plugins      | Full control, security, backups                       |
-| **Plugin Developers**    | Extend CMS functionality                  | Stable APIs, hooks, documentation                     |
-| **Theme Designers**      | Design site appearance                    | Template engine, CSS flexibility                      |
-| **End Users (Visitors)** | Consume content                           | Fast, responsive, accessible pages                    |
-| **DevOps / Infra Team**  | Deploy and scale the platform             | Containerization, monitoring, CI/CD                   |
-| **Business Owners**      | Drive revenue via content                 | Analytics, SEO, uptime, cost                          |
+### 3. System Overview
+The system follows a simple four-tiered model where a user request travels downward from the User Layer (categorized by roles like Administrator, Editor, or Visitor) into the Application Layer, where the server-side WordPress Core (PHP) executes the business logic. To process the request and display the page, the Core coordinates with the Presentation/Extension Layer—using Themes for design layouts and Plugins for custom functionality—while pulling or saving data like posts, media, and settings from the Data Layer (MySQL Database). Concurrently, the Core handles external integrations by communicating bi-directionally with outside services like payment gateways and email APIs to complete specialized tasks.
  
 ## 3. Architectural View
 ### 3.1 Functional Requirements
