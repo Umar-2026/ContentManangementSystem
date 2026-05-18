@@ -60,11 +60,11 @@ The system allows users to manage posts, pages, media, and users through a web-b
 
 The platform is highly extensible through themes and plugins, allowing customization of website design and functionality without modifying the core system. It is suitable for blogs, business websites, and dynamic web applications.
 ## 1.1 Futures
-_ **Customer/User Interface:**
-  - Browse website content (posts/pages)
-  - Read articles and media content
-  - Comment on posts (if enabled)
-  - User registration and login
+- **Customer/User Interface:**
+   - Browse website content (posts/pages)
+   - Read articles and media content
+   - Comment on posts (if enabled)
+   - User registration and login
 - **Admin Dashboard:**
   - Create, edit, and delete posts and pages
   - Manage users and roles
