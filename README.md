@@ -11,7 +11,7 @@
 
 # Table of Contents
 - [1. Project Description](#1-project-description)
-- [1.1 Futures](#11-futures)
+- [2 Futures](#2-futures)
 - [2. System Overview](#2-system-overview)
     - [2.1 System Description](#21-system-description)
     - [2.2 Business Goals](#22-business-goals)
@@ -54,12 +54,12 @@
 - [13. Technology Stack](#13-technology-stack)
 - [14. Risks & Mitigations](#14-risks--mitigations)
 ## 1. Project Description	
-This project is based on WordPress, a Content Management System (CMS) used to create, manage, and publish website content easily without requiring advanced programming knowledge.
+This project is based on 'WordPress, a Content Management System (CMS) used to create, manage, and publish website content easily without requiring advanced programming knowledge.
 
 The system allows users to manage posts, pages, media, and users through a web-based dashboard. It supports multiple user roles such as administrator, editor, author, and subscriber, each having different access levels and permissions.
 
 The platform is highly extensible through themes and plugins, allowing customization of website design and functionality without modifying the core system. It is suitable for blogs, business websites, and dynamic web applications.
-## 1.1 Futures
+## 2 Futures
 - **Customer/User Interface:**
    - Browse website content (posts/pages)
    - Read articles and media content
