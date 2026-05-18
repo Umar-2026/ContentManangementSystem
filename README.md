@@ -11,9 +11,7 @@
 
 # Table of Contents
 - [1. Project Description](#1-project-description)
-    - [1.1 Purpose](#11-purpose)
-    - [1.2 Scope](#12-scope)
-    - [1.3 Definitions & Abbreviations](#13-definitions--abbreviations)
+- [1.1 Futures](#11-futures)
 - [2. System Overview](#2-system-overview)
     - [2.1 System Description](#21-system-description)
     - [2.2 Business Goals](#22-business-goals)
@@ -61,37 +59,29 @@ This project is based on WordPress, a Content Management System (CMS) used to cr
 The system allows users to manage posts, pages, media, and users through a web-based dashboard. It supports multiple user roles such as administrator, editor, author, and subscriber, each having different access levels and permissions.
 
 The platform is highly extensible through themes and plugins, allowing customization of website design and functionality without modifying the core system. It is suitable for blogs, business websites, and dynamic web applications.
-### 1.1 Purpose
-This Software Architecture Design Document (SADD) describes the complete architectural blueprint for a Content Management System (CMS) modeled after WordPress. It documents architectural decisions, system structure, component interactions, deployment strategies, and quality attributes. It serves as the main technical reference for developers, architects, testers, and stakeholders involved in system design and development.
+### 1.1 Futures
+# Customer/User Interface:
+  Browse website content (posts/pages)
+  Read articles and media content
+  Comment on posts (if enabled)
+  User registration and login
+# Admin Dashboard:
+  Create, edit, and delete posts and pages
+  Manage users and roles
+  Upload and manage media files
+  Control website settings
+# Theme System:
+  Customize website appearance
+  Change layout, design, and styling
+  Apply pre-built or custom themes
+# Plugin System:
+  Extend system functionality
+  Add features like SEO tools, forms, security, and e-commerce
+  Install and manage plugins easily
+### 1.2 Benefits
+The WordPress system provides an easy-to-use platform for building and managing websites without technical complexity. It reduces development time and cost while offering high flexibility through themes and plugins.
 
-### 1.2 Scope
-The CMS covers the following functional areas:
-Content creation, editing, publishing, and management (posts, pages, media)
-User authentication, authorization, roles, and permissions
-Theme and template engine for frontend rendering
-Plugin and extension framework for system extensibility
-RESTful API for headless CMS and third-party integration
-Database persistence and caching mechanisms
-Admin dashboard for system configuration and management
-SEO tools, analytics integration, and media library management
-
-### 1.3 Definitions & Abbreviations
-
-| Term / Acronym | Definition |
-|----------------|------------|
-| CMS            | Content Management System |
-| API            | Application Programming Interface |
-| REST           | Representational State Transfer |
-| CDN            | Content Delivery Network |
-| MVC            | Model-View-Controller design pattern |
-| ORM            | Object Relational Mapper |
-| JWT            | JSON Web Token for stateless auth |
-| WYSIWYG        | What You See Is What You Get (editor) |
-| RBAC           | Role-Based Access Control |
-| SaaS           | Software as a Service |
-| SSR            | Server-Side Rendering |
-| CSR            | Client-Side Rendering |
- 
+It supports scalability, allowing users to expand website functionality as needed. Its large community support and open-source nature make it a reliable and widely used CMS solution.
 ### 2. System Overview
 ### 2.1 System Description
 The CMS is a full-featured, extensible web-based platform that enables non-technical users to create, edit, organize, and publish digital content make website, blog or post . Inspired by WordPress, the system follows a plugin-based monolithic-to-microservices evolution path — starting with a modular monolith and providing clean API boundaries for future service extraction.
