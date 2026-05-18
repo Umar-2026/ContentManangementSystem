@@ -59,25 +59,25 @@ This project is based on WordPress, a Content Management System (CMS) used to cr
 The system allows users to manage posts, pages, media, and users through a web-based dashboard. It supports multiple user roles such as administrator, editor, author, and subscriber, each having different access levels and permissions.
 
 The platform is highly extensible through themes and plugins, allowing customization of website design and functionality without modifying the core system. It is suitable for blogs, business websites, and dynamic web applications.
-### 1.1 Futures
-# Customer/User Interface:
-  Browse website content (posts/pages)
-  Read articles and media content
-  Comment on posts (if enabled)
-  User registration and login
-# Admin Dashboard:
-  Create, edit, and delete posts and pages
-  Manage users and roles
-  Upload and manage media files
-  Control website settings
-# Theme System:
-  Customize website appearance
-  Change layout, design, and styling
-  Apply pre-built or custom themes
-# Plugin System:
-  Extend system functionality
-  Add features like SEO tools, forms, security, and e-commerce
-  Install and manage plugins easily
+## 1.1 Futures
+_ **Customer/User Interface:**
+  - Browse website content (posts/pages)
+  - Read articles and media content
+  - Comment on posts (if enabled)
+  - User registration and login
+- **Admin Dashboard:**
+  - Create, edit, and delete posts and pages
+  - Manage users and roles
+  - Upload and manage media files
+  - Control website settings
+- **Theme System:**
+  - Customize website appearance
+  - Change layout, design, and styling
+  - Apply pre-built or custom themes
+- **Plugin System:**
+  - Extend system functionality
+  - Add features like SEO tools, forms, security, and e-commerce
+  - Install and manage plugins easily
 ### 1.2 Benefits
 The WordPress system provides an easy-to-use platform for building and managing websites without technical complexity. It reduces development time and cost while offering high flexibility through themes and plugins.
 
