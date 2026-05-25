@@ -541,23 +541,7 @@ graph TD
 
 ---
 
-# 10. Improvements According to Course Comments
-
-| Course Comment | Improvement Made |
-|---|---|
-| Optional integrations like payment gateway and analytics are not core WordPress architecture. | Removed optional integrations from the main architecture focus. |
-| WordPress uses multiple architecture styles. | Added client-server, modular monolith, plugin-based, and event-driven hooks. |
-| Diagrams should not be over-complicated. | Focused diagrams on WordPress Core, themes, plugins, hooks, PHP, and database. |
-| PHP Laravel is not a popular WordPress approach. | Removed Laravel, React Admin, Next.js, Kubernetes, and custom CMS technologies. |
-| Clarify external person and external system. | Added clear difference between human actors and technical systems. |
-| “Data Architecture” should be “Data Model”. | Renamed the section to Data Model. |
-| Data model is a key design decision. | Added ADD-07 for MySQL/MariaDB WordPress Data Model. |
-| Appendix is not necessary. | Removed appendix. |
-| Font and heading consistency should be improved. | Used consistent Markdown headings and tables. |
-
----
-
-# 11. Conclusion
+# 10. Conclusion
 
 This document explains the architecture of WordPress CMS in a simple and structured way. It focuses on the real WordPress core architecture instead of optional third-party integrations.
 
