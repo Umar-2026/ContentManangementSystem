@@ -34,7 +34,6 @@ A key idea in WordPress is that the core system should not be changed directly. 
 - [7. Key Architecture Design Decisions](#7-key-architecture-design-decisions)
 - [8. Relationships Between Architecture Design Decisions](#8-relationships-between-architecture-design-decisions)
 - [9. Decision Relationship Diagram](#9-decision-relationship-diagram)
-- [10. Improvements According to Course Comments](#10-improvements-according-to-course-comments)
 - [11. Conclusion](#11-conclusion)
 
 ---
