@@ -57,9 +57,7 @@ The purpose of this document is to explain WordPress architecture in a clear and
 ## 2. Context Diagram and Description
 
 ### 2.1 Context Diagram
-
-![WordPress CMS Context Diagram](./diagrams/wordpress_cms_context_diagram.png)
-
+![WordPress CMS Context Diagram](Context%20Diagram.png)
 ### 2.2 Context Description
 
 The context view shows WordPress CMS as the central system and explains how external people and external systems interact with it.
