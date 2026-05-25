@@ -58,7 +58,7 @@ The purpose of this document is to explain WordPress architecture in a clear and
 
 ### 2.1 Context Diagram
 
-! [WordPress CMS Context Diagram](diagrams/wordpress_cms_context_diagram.png)
+![WordPress CMS Context Diagram](./diagrams/wordpress_cms_context_diagram.png)
 
 ### 2.2 Context Description
 
