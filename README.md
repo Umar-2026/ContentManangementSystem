@@ -72,7 +72,7 @@ The main goal of this document is to explain how WordPress is structured, why th
 
 ## 2.1 Context Diagram
 
-![WordPress CMS Context Diagram](diagrams/wordpress_cms_context_diagram.png)
+![WordPress CMS Context Diagram](Context%20Diagram.png)
 
 ## 2.2 Context Description
 
