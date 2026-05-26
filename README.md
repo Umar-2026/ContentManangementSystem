@@ -215,7 +215,7 @@ To explain WordPress architecture clearly, this document uses five architecture 
 
 ## 6.1 Context View
 
-![WordPress CMS Context Diagram](diagrams/wordpress_cms_context_diagram.png)
+![WordPress CMS Context Diagram](Context%20Diagram.png)
 
 The context view shows the boundary of the WordPress system. It explains which users interact with WordPress and which technical systems support it.
 
