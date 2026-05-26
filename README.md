@@ -281,8 +281,7 @@ Plugins and themes do not need to change WordPress Core. They connect to WordPre
 ---
 
 ## 6.4 Deployment View
-
-![WordPress CMS Deployment Diagram](diagrams/wordpress_cms_deployment_architecture_diagram.png)
+![WordPress CMS Deployment Diagram](Deployement%20Diagram.png)
 
 The deployment view shows how WordPress runs in a real hosting environment.
 
