@@ -236,6 +236,7 @@ flowchart LR
     Admin -->|Manage settings and security| WP
     PluginDev -->|Develop plugins using hooks| WP
     Owner -->|Monitor website value and growth| WP
+```
 
 ---
 
@@ -247,7 +248,7 @@ The context view shows the boundary of the WordPress system. It explains which u
 
 ---
 
-## 6.2 Logical / Module View
+## 6.3 Logical / Module View
 
 The logical view shows the internal parts of WordPress.
 
@@ -281,7 +282,7 @@ Simple explanation:
 
 ---
 
-## 6.3 Plugin and Hooks View
+## 6.4 Plugin and Hooks View
 
 This view explains how WordPress can be extended without modifying the core.
 
@@ -306,7 +307,8 @@ Plugins and themes do not need to change WordPress Core. They connect to WordPre
 
 ---
 
-## 6.4 Deployment View
+## 6.5 Deployment View
+
 ![WordPress CMS Deployment Diagram](./Deployment%20Diagram.png)
 
 The deployment view shows how WordPress runs in a real hosting environment.
@@ -336,7 +338,7 @@ MySQL/MariaDB Database
 
 ---
 
-## 6.5 Data Model View
+## 6.6 Data Model View
 
 The data model is a key architecture design decision in WordPress. WordPress uses a relational database model with MySQL or MariaDB.
 
@@ -371,7 +373,6 @@ This data model is flexible because WordPress can store different types of conte
 ---
 
 # 7. Key Architecture Design Decisions
-
 
 This section documents the main architecture decisions in WordPress. Each decision includes clear **Issue**, **Importance**, **Decision**, **Arguments**, **Positive Impact**, and **Negative Impact** for clarity.
 
@@ -481,6 +482,25 @@ This section documents the main architecture decisions in WordPress. Each decisi
 
 ---
 
+# 8. Relationships Between Architecture Design Decisions
+
+Architecture decisions in WordPress are not separate from each other. Each decision supports, depends on, or constrains another decision. These relationships help explain how the overall WordPress architecture works as one complete system.
+
+| Relationship ID | Decision A | Relationship | Decision B | Explanation |
+|---|---|---|---|---|
+| REL-01 | ADD-01 Client-Server Architecture | Enables | ADD-02 Modular Monolith Architecture | Because WordPress runs on a server, it can be deployed as one server-side application with internal modules. |
+| REL-02 | ADD-02 Modular Monolith Architecture | Supports | ADD-03 Core-Extension Separation | Since WordPress has one central core, plugins and themes are kept separate to protect the stability of the core system. |
+| REL-03 | ADD-03 Core-Extension Separation | Enables | ADD-04 Plugin-Based Architecture | Because the core should not be modified directly, plugins are used to add new features safely. |
+| REL-04 | ADD-04 Plugin-Based Architecture | Depends On | ADD-05 Hooks for Event-Driven Extension | Plugins need hooks to communicate with WordPress Core and run functionality at specific events. |
+| REL-05 | ADD-05 Hooks for Event-Driven Extension | Supports | ADD-03 Core-Extension Separation | Hooks allow plugins and themes to extend WordPress without changing the core files. |
+| REL-06 | ADD-06 Theme-Based Presentation Layer | Supports | ADD-03 Core-Extension Separation | Themes manage design and layout separately, so visual changes do not affect WordPress Core logic. |
+| REL-07 | ADD-07 MySQL/MariaDB Data Model | Supports | ADD-04 Plugin-Based Architecture | Plugins can store extra settings, metadata, and configuration data using WordPress database tables. |
+| REL-08 | ADD-08 Role-Based Access Control | Constrains | ADD-04 Plugin-Based Architecture | Plugins must follow WordPress user roles and permissions to avoid unauthorized access and security risks. |
+
+These relationships show that WordPress architecture is connected and balanced. The client-server model allows WordPress to run as a server-side application. The modular monolith structure keeps the system simple, while core-extension separation protects the main WordPress Core. Plugins and hooks provide extensibility, themes handle presentation, the database supports content and plugin data, and role-based access control protects the system from unauthorized actions.
+
+---
+
 # 9. Decision Relationship Diagram
 
 ```mermaid
@@ -502,29 +522,9 @@ graph TD
     F -->|REL-06 supports| C
     G -->|REL-07 supports| D
     H -->|REL-08 constrains| D
----
+```
 
-# # 9. Decision Relationship Diagram
-
-```mermaid
-graph TD
-    A[ADD-01 Client-Server Architecture]
-    B[ADD-02 Modular Monolith Architecture]
-    C[ADD-03 Core-Extension Separation]
-    D[ADD-04 Plugin-Based Architecture]
-    E[ADD-05 Hooks for Event-Driven Extension]
-    F[ADD-06 Theme-Based Presentation Layer]
-    G[ADD-07 MySQL/MariaDB Data Model]
-    H[ADD-08 Role-Based Access Control]
-
-    A -->|REL-01 enables| B
-    B -->|REL-02 supports| C
-    C -->|REL-03 enables| D
-    D -->|REL-04 depends on| E
-    E -->|REL-05 supports| C
-    F -->|REL-06 supports| C
-    G -->|REL-07 supports| D
-    H -->|REL-08 constrains| D
+This diagram shows the relationship between the eight architecture design decisions. Each relationship explains how one decision affects another decision in the WordPress architecture.
 
 ---
 
