@@ -50,7 +50,6 @@ WordPress works in a simple flow:
 4. PHP executes the WordPress Core.
 5. WordPress Core loads themes, plugins, hooks, and required data.
 6. WordPress gets content from the MySQL/MariaDB database.
-7. The final webpage is generated and shown to the user.
 
 The most important parts of WordPress architecture are:
 
@@ -129,14 +128,9 @@ Architecture drivers are the important reasons that influence architecture decis
 |---|---|---|
 | Easy Content Management | Users should create and update content easily. | Requires admin dashboard, editor, media library, posts, and pages. |
 | Extensibility | New features should be added without changing the core. | Requires plugins and hooks. |
-| Customizable Design | Website look should be changeable. | Requires themes and templates. |
-| Maintainability | WordPress should be easy to update and manage. | Requires separation of core, plugins, themes, and database. |
-| Security | User accounts and admin area must be protected. | Requires login, roles, permissions, updates, and secure plugins. |
-| Performance | Website should load quickly. | Requires efficient PHP execution, database optimization, caching, and careful plugin use. |
-| Data Flexibility | WordPress must store different types of content. | Requires relational data model with posts, metadata, users, comments, and options. |
-| Usability | Non-technical users should manage websites easily. | Requires simple dashboard and clear workflow. |
-
----
+| Customizable Design | Website look should be flexible and adaptable for different brands. | Requires themes, templates, and styling support. |
+| Security | User accounts, roles, and admin area must be protected. | Requires login controls, permissions, secure plugins, and update mechanisms. |
+| Performance | Website should load quickly and handle multiple users efficiently. | Requires optimized PHP execution, database queries, caching, and careful plugin selection. |
 
 # 5. Architecture Styles Used in WordPress
 
@@ -201,19 +195,51 @@ A plugin can use a hook to add extra text at the end of a blog post without chan
 
 # 6. Architecture Views Chosen
 
-To explain WordPress architecture clearly, this document uses five architecture views.
+## 6.1 Use Case View
 
-| Architecture View | Purpose |
-|---|---|
-| Context View | Shows WordPress, users, and external systems. |
-| Logical / Module View | Shows main WordPress modules. |
-| Plugin and Hooks View | Shows how plugins extend WordPress using hooks. |
-| Deployment View | Shows how WordPress runs on a server. |
-| Data Model View | Shows how WordPress stores data in database tables. |
+The use case view explains the main functions of WordPress from the users’ perspective. It shows what different actors can do in the system.
+
+Main actors include:
+
+- Site Visitor
+- Content Author
+- Site Administrator
+- Plugin Developer
+- Website Owner
+
+Main use cases include:
+
+- View website content
+- Create and edit posts/pages
+- Upload and manage media
+- Manage users and roles
+- Install and configure themes
+- Install and configure plugins
+- Extend functionality through hooks
+- Manage website settings and security
+
+```mermaid
+flowchart LR
+    Visitor[Site Visitor]
+    Author[Content Author]
+    Admin[Site Administrator]
+    PluginDev[Plugin Developer]
+    Owner[Website Owner]
+
+    WP[WordPress CMS]
+
+    Visitor -->|View pages and posts| WP
+    Author -->|Create and edit content| WP
+    Author -->|Upload media| WP
+    Admin -->|Manage users and roles| WP
+    Admin -->|Install themes and plugins| WP
+    Admin -->|Manage settings and security| WP
+    PluginDev -->|Develop plugins using hooks| WP
+    Owner -->|Monitor website value and growth| WP
 
 ---
 
-## 6.1 Context View
+## 6.2 Context View
 
 ![WordPress CMS Context Diagram](Context%20Diagram.png)
 
@@ -346,7 +372,8 @@ This data model is flexible because WordPress can store different types of conte
 
 # 7. Key Architecture Design Decisions
 
-This section documents key architecture decisions using the course template.
+
+This section documents the main architecture decisions in WordPress. Each decision includes clear **Issue**, **Importance**, **Decision**, **Arguments**, **Positive Impact**, and **Negative Impact** for clarity.
 
 ---
 
@@ -354,16 +381,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How should users access WordPress? |
-| Importance | WordPress is a web system, so users need to access it through a browser. |
-| Decision | Use client-server architecture. Browser is the client, and WordPress runs on the server. |
-| Status | Accepted |
-| Group | Architecture Style |
-| Assumptions | Users have browsers and internet access. The server supports PHP and database. |
-| Alternatives | Desktop CMS, mobile-only CMS, fully client-side system. |
-| Arguments | This is suitable because WordPress is designed as a web-based CMS. |
-| Implications | Website depends on server, network, and browser compatibility. |
-| Possible Negative Impact on Quality | If the server is slow or down, users cannot access the website. |
+| Issue | How should users access WordPress CMS? |
+| Importance | Visitors, content authors, and administrators need reliable, cross-platform web access. |
+| Decision | Use a client-server architecture: the browser acts as the client, and WordPress runs on the server. |
+| Arguments | This approach allows users to access WordPress from any device without installing software. Requests are processed securely on the server, separating frontend access from backend logic. |
+| Positive Impact | Easy access from multiple devices, simplifies deployment and maintenance, supports scalability for small to medium sites. |
+| Negative Impact | Server downtime or network issues can prevent access; performance depends on server configuration and network speed. |
 
 ---
 
@@ -371,16 +394,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | Should WordPress be one application or many independent services? |
-| Importance | WordPress should be easy to deploy and maintain. |
-| Decision | Use modular monolith architecture. WordPress runs as one application but has internal modules. |
-| Status | Accepted |
-| Group | Architecture Style |
-| Assumptions | Standard WordPress architecture is used. |
-| Alternatives | Microservices, service-oriented architecture. |
-| Arguments | WordPress Core is one PHP application but contains modules for posts, users, comments, media, themes, and plugins. |
-| Implications | Deployment is simple and easier to manage. |
-| Possible Negative Impact on Quality | Individual modules cannot be scaled separately like microservices. |
+| Issue | Should WordPress be structured as one application or multiple independent services? |
+| Importance | Ensures maintainability and simplifies deployment. |
+| Decision | Deploy WordPress as a modular monolith: one application with internal modules for posts, users, comments, media, themes, plugins, and settings. |
+| Arguments | A monolith keeps deployment simple while separating logical responsibilities internally. Easier for administrators to maintain one cohesive system. |
+| Positive Impact | Simplifies deployment, maintainable, modules are internally separated for clarity. |
+| Negative Impact | Cannot scale individual modules independently; a failure in one module may impact the whole system. |
 
 ---
 
@@ -388,16 +407,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How should new features be added safely? |
-| Importance | WordPress Core should remain updateable and stable. |
-| Decision | Do not modify WordPress Core directly. Use plugins and themes for customization. |
-| Status | Accepted |
-| Group | Maintainability / Extensibility |
-| Assumptions | Plugins and themes provide enough customization. |
-| Alternatives | Modify core files directly, build custom CMS. |
-| Arguments | Keeping the core unchanged makes updates safer. |
-| Implications | Developers must follow WordPress extension rules. |
-| Possible Negative Impact on Quality | Poor plugins or themes can still cause security or performance issues. |
+| Issue | How can new features be added safely without affecting WordPress Core? |
+| Importance | Maintaining system stability and updateability. |
+| Decision | Do not modify WordPress Core directly. Add new features via plugins and themes. |
+| Arguments | Separating core and extensions ensures updates do not break customizations and preserves stability. |
+| Positive Impact | Maintains core integrity, safer updates, extensibility through plugins/themes. |
+| Negative Impact | Poorly coded plugins/themes can still introduce performance, security, or compatibility issues. |
 
 ---
 
@@ -405,16 +420,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How should extra functionality be added? |
-| Importance | Different websites need different features. |
-| Decision | Use plugins to add optional features. |
-| Status | Accepted |
-| Group | Extensibility |
-| Assumptions | Plugin system is stable and supports required features. |
-| Alternatives | Add all features into core, use external systems only. |
-| Arguments | Plugins make WordPress flexible and customizable. |
-| Implications | Users can install only the features they need. |
-| Possible Negative Impact on Quality | Too many plugins can slow down the website or create conflicts. |
+| Issue | How can WordPress support optional features for different websites? |
+| Importance | Websites require different functionalities such as SEO, forms, analytics, or e-commerce. |
+| Decision | Use plugin-based architecture to allow optional features without modifying core. |
+| Arguments | Plugins provide flexibility, customization, and isolation of features without affecting the core system. |
+| Positive Impact | Increases flexibility and functionality; users can install only needed features. |
+| Negative Impact | Excessive plugins can reduce performance, create conflicts, or introduce vulnerabilities. |
 
 ---
 
@@ -422,16 +433,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How can plugins communicate with WordPress Core? |
-| Importance | Plugins need a safe way to interact with core behavior. |
-| Decision | Use WordPress hooks, including actions and filters. |
-| Status | Accepted |
-| Group | Event-Driven Architecture |
-| Assumptions | Developers use standard hooks. |
-| Alternatives | Direct core modification, hard-coded changes. |
-| Arguments | Hooks allow plugins to add or modify behavior without changing core files. |
-| Implications | WordPress becomes easier to extend. |
-| Possible Negative Impact on Quality | Too many hooks or poorly written hook functions can make debugging difficult. |
+| Issue | How can plugins safely interact with WordPress Core? |
+| Importance | Ensures modular extensions can execute code without modifying the core. |
+| Decision | Implement hooks (actions and filters) for event-driven communication. |
+| Arguments | Hooks allow extensions to react to events and modify behavior safely and flexibly. |
+| Positive Impact | Supports extensibility and maintainability, reduces direct code changes in the core. |
+| Negative Impact | Poorly written hooks can make debugging difficult and may affect performance. |
 
 ---
 
@@ -440,15 +447,11 @@ This section documents key architecture decisions using the course template.
 | Template Item | Description |
 |---|---|
 | Issue | How should website design be managed? |
-| Importance | Design should be changeable without changing content. |
+| Importance | Design must be flexible without changing content or core logic. |
 | Decision | Use WordPress themes for layout, templates, and styling. |
-| Status | Accepted |
-| Group | Presentation / Modifiability |
-| Assumptions | Content and design should be separate. |
-| Alternatives | Hard-code design in core, use separate frontend application. |
-| Arguments | Themes allow website design to change while content stays the same. |
-| Implications | Website owner can change the look easily. |
-| Possible Negative Impact on Quality | Poor themes can affect speed, accessibility, and security. |
+| Arguments | Themes separate content from presentation, allowing easy design updates and brand customization. |
+| Positive Impact | Improves modifiability, usability, and aesthetic flexibility. |
+| Negative Impact | Poorly coded themes can impact performance, accessibility, and security. |
 
 ---
 
@@ -456,16 +459,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How should WordPress store its data? |
-| Importance | Data storage affects performance, flexibility, and maintainability. |
-| Decision | Use WordPress standard MySQL/MariaDB relational data model. |
-| Status | Accepted |
-| Group | Data Model |
-| Assumptions | WordPress needs to store posts, pages, users, comments, settings, and metadata. |
-| Alternatives | NoSQL database, file-based storage, custom schema. |
-| Arguments | MySQL/MariaDB is the standard and supported data storage for WordPress. |
-| Implications | WordPress can store flexible content and metadata. |
-| Possible Negative Impact on Quality | Poor database queries or too much metadata can reduce performance. |
+| Issue | How should WordPress store content, users, and metadata? |
+| Importance | Database design affects performance, maintainability, and flexibility. |
+| Decision | Use relational database (MySQL/MariaDB) as standard WordPress storage. |
+| Arguments | Relational DB provides structured storage, easy queries, and consistent data relationships. |
+| Positive Impact | Efficient data storage, supports content, users, and plugin metadata; reliable and scalable. |
+| Negative Impact | Poorly optimized queries or too much metadata can degrade performance. |
 
 ---
 
@@ -473,37 +472,12 @@ This section documents key architecture decisions using the course template.
 
 | Template Item | Description |
 |---|---|
-| Issue | How should WordPress control user permissions? |
-| Importance | Different users should have different access levels. |
-| Decision | Use role-based access control. |
-| Status | Accepted |
-| Group | Security |
-| Assumptions | Admins, authors, editors, subscribers, and visitors need different permissions. |
-| Alternatives | Same permissions for all users, custom permission system. |
-| Arguments | RBAC is simple and suitable for CMS workflow. |
-| Implications | Admin actions and content workflows are controlled. |
-| Possible Negative Impact on Quality | Wrong role settings or insecure plugins can cause security risks. |
-
----
-
-# 8. Relationships Between Architecture Design Decisions
-
-Architecture decisions are connected to each other. One decision can enable, constrain, depend on, or conflict with another decision.
-
-| Relationship ID | Decision A | Relationship | Decision B | Easy Explanation |
-|---|---|---|---|---|
-| REL-01 | Client-Server Architecture | Enables | Modular Monolith | Because WordPress runs on a server, it can work as one server-side application. |
-| REL-02 | Modular Monolith | Enables | Core-Extension Separation | Since WordPress has one core, plugins and themes must stay separate from it. |
-| REL-03 | Core-Extension Separation | Enables | Plugin-Based Architecture | If core is not changed, plugins are needed for new features. |
-| REL-04 | Plugin-Based Architecture | Depends On | Hooks | Plugins need hooks to connect with WordPress Core. |
-| REL-05 | Hooks | Enables | Plugin-Based Architecture | Hooks make plugins useful and flexible. |
-| REL-06 | Theme-Based Layer | Constrains | Core-Extension Separation | Themes should change design, not core logic. |
-| REL-07 | Data Model | Enables | Plugin-Based Architecture | Plugins can store extra data using metadata and options. |
-| REL-08 | Role-Based Access Control | Constrains | Plugin-Based Architecture | Plugins must follow WordPress roles and permissions. |
-| REL-09 | Plugin-Based Architecture | May Conflict With | Security | Bad plugins can create security risks. |
-| REL-10 | Plugin-Based Architecture | May Conflict With | Performance | Too many plugins can slow down the website. |
-| REL-11 | Data Model | Constrains | Theme-Based Layer | Themes display content based on how data is stored. |
-| REL-12 | Modular Monolith | Alternative To | Microservices | WordPress standard architecture is not microservices. |
+| Issue | How should WordPress control user permissions securely? |
+| Importance | Users have different responsibilities; proper access control is critical for security. |
+| Decision | Implement RBAC with predefined roles: Admin, Editor, Author, Contributor, Subscriber. |
+| Arguments | RBAC ensures each user has only necessary permissions, reducing risks of unauthorized actions. |
+| Positive Impact | Enhances security, workflow control, and accountability. |
+| Negative Impact | Misconfigured roles or insecure plugins can still pose security threats. |
 
 ---
 
@@ -512,30 +486,45 @@ Architecture decisions are connected to each other. One decision can enable, con
 ```mermaid
 graph TD
     A[ADD-01 Client-Server Architecture]
-    B[ADD-02 Modular Monolith]
-    C[ADD-03 Core Separate from Extensions]
+    B[ADD-02 Modular Monolith Architecture]
+    C[ADD-03 Core-Extension Separation]
     D[ADD-04 Plugin-Based Architecture]
-    E[ADD-05 Hooks]
-    F[ADD-06 Theme-Based Layer]
+    E[ADD-05 Hooks for Event-Driven Extension]
+    F[ADD-06 Theme-Based Presentation Layer]
     G[ADD-07 MySQL/MariaDB Data Model]
     H[ADD-08 Role-Based Access Control]
-    P[Performance]
-    S[Security]
-    M[Microservices]
 
-    A -->|enables| B
-    B -->|enables| C
-    C -->|enables| D
-    D -->|depends on| E
-    E -->|enables| D
-    F -->|constrains| C
-    G -->|enables| D
-    G -->|constrains| F
-    H -->|constrains| D
-    D -. may conflict with .-> P
-    D -. may conflict with .-> S
-    B -. alternative to .-> M
-```
+    A -->|REL-01 enables| B
+    B -->|REL-02 supports| C
+    C -->|REL-03 enables| D
+    D -->|REL-04 depends on| E
+    E -->|REL-05 supports| C
+    F -->|REL-06 supports| C
+    G -->|REL-07 supports| D
+    H -->|REL-08 constrains| D
+---
+
+# # 9. Decision Relationship Diagram
+
+```mermaid
+graph TD
+    A[ADD-01 Client-Server Architecture]
+    B[ADD-02 Modular Monolith Architecture]
+    C[ADD-03 Core-Extension Separation]
+    D[ADD-04 Plugin-Based Architecture]
+    E[ADD-05 Hooks for Event-Driven Extension]
+    F[ADD-06 Theme-Based Presentation Layer]
+    G[ADD-07 MySQL/MariaDB Data Model]
+    H[ADD-08 Role-Based Access Control]
+
+    A -->|REL-01 enables| B
+    B -->|REL-02 supports| C
+    C -->|REL-03 enables| D
+    D -->|REL-04 depends on| E
+    E -->|REL-05 supports| C
+    F -->|REL-06 supports| C
+    G -->|REL-07 supports| D
+    H -->|REL-08 constrains| D
 
 ---
 
