@@ -134,51 +134,79 @@ Architecture drivers are the important reasons that influence architecture decis
 
 # 5. Architecture Styles Used in WordPress
 
-WordPress does not use only one architecture style. It combines multiple architecture styles.
+WordPress does not use only one architecture style. It combines multiple architecture styles to support flexibility, maintainability, extensibility, and security. The following figures show how each architecture style is used in the WordPress architecture design.
+
+---
 
 ## 5.1 Client-Server Architecture
 
-WordPress uses client-server architecture. The user uses a web browser as the client. The WordPress website runs on a server. The browser sends requests, and the server returns web pages.
+WordPress uses client-server architecture. The user accesses the website through a web browser, while WordPress runs on the server side. The browser sends a request, and the server processes it using PHP, WordPress Core, and the database.
 
-Simple flow:
-
-```text
-Browser → Web Server → PHP → WordPress Core → Database → Web Page
+```mermaid
+flowchart LR
+    Client[Client / Web Browser] -->|HTTP/HTTPS Request| Server[Web Server]
+    Server --> PHP[PHP Runtime]
+    PHP --> WP[WordPress Core]
+    WP --> DB[(MySQL / MariaDB Database)]
+    DB --> WP
+    WP --> PHP
+    PHP --> Server
+    Server -->|HTML/CSS/JS Response| Client
 ```
+
+This figure shows how the browser acts as the client, while the web server, PHP runtime, WordPress Core, and database work on the server side.
+
+---
 
 ## 5.2 Modular Monolith Architecture
 
-WordPress Core is deployed as one main application. However, inside the application, different modules handle different responsibilities.
+WordPress follows a modular monolith structure. It is deployed as one main application, but internally it is divided into different modules. Each module handles a specific responsibility.
 
-Examples of modules:
+```mermaid
+flowchart TD
+    WP[WordPress Core / Main Application]
 
-- Posts
-- Pages
-- Users
-- Comments
-- Media
-- Themes
-- Plugins
-- Settings
+    WP --> Posts[Posts Module]
+    WP --> Pages[Pages Module]
+    WP --> Users[Users Module]
+    WP --> Comments[Comments Module]
+    WP --> Media[Media Module]
+    WP --> Themes[Themes Module]
+    WP --> Plugins[Plugins Module]
+    WP --> Settings[Settings Module]
+```
 
-This is called a modular monolith because it is one application but internally divided into modules.
+This figure shows that WordPress works as one main application, but its internal responsibilities are divided into modules such as posts, users, comments, media, themes, plugins, and settings.
+
+---
 
 ## 5.3 Plugin-Based / Microkernel-Like Architecture
 
-WordPress Core provides the basic services. Extra features are added through plugins. This is similar to microkernel architecture because the core remains small and stable, while plugins add extra functionality.
+WordPress also uses a plugin-based architecture, which is similar to a microkernel style. WordPress Core provides the basic services, while plugins add optional features without directly modifying the core.
 
-Example:
+```mermaid
+flowchart TD
+    Core[WordPress Core]
 
-- Contact form plugin adds forms.
-- SEO plugin adds SEO features.
-- Security plugin adds protection.
-- WooCommerce plugin adds e-commerce features.
+    Core --> HookSystem[Hook System]
+    HookSystem --> Plugin1[SEO Plugin]
+    HookSystem --> Plugin2[Contact Form Plugin]
+    HookSystem --> Plugin3[Security Plugin]
+    HookSystem --> Plugin4[WooCommerce Plugin]
 
-These features are not built directly into the core.
+    Plugin1 --> Feature1[SEO Features]
+    Plugin2 --> Feature2[Forms]
+    Plugin3 --> Feature3[Protection]
+    Plugin4 --> Feature4[E-commerce]
+```
+
+This figure shows how plugins extend WordPress functionality through the hook system without changing WordPress Core directly.
+
+---
 
 ## 5.4 Event-Driven Architecture through Hooks
 
-WordPress uses hooks to allow plugins and themes to interact with the core.
+WordPress uses hooks as an event-driven mechanism. Hooks allow plugins and themes to react to WordPress events or modify data during execution.
 
 There are two main types of hooks:
 
@@ -187,9 +215,25 @@ There are two main types of hooks:
 | Actions | Run custom code when a specific event happens. |
 | Filters | Modify data before it is displayed or saved. |
 
-Example:
+```mermaid
+flowchart LR
+    Event[WordPress Event Occurs] --> Hook[Hook System]
 
-A plugin can use a hook to add extra text at the end of a blog post without changing WordPress Core.
+    Hook --> Action[Action Hook]
+    Hook --> Filter[Filter Hook]
+
+    Action --> RunCode[Run Extra Code]
+    Filter --> ModifyData[Modify Data]
+
+    RunCode --> Output[Final Website Behavior]
+    ModifyData --> Output
+```
+
+This figure shows that when an event occurs in WordPress, hooks allow plugins or themes to run extra code or modify data safely.
+
+---
+
+Overall, these architecture styles work together in WordPress. Client-server architecture supports web access, modular monolith keeps the system organized, plugin-based architecture supports extensibility, and event-driven hooks allow safe communication between WordPress Core, plugins, and themes.
 
 ---
 
