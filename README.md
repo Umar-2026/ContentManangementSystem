@@ -536,22 +536,20 @@ This section documents the main architecture decisions in WordPress. Each decisi
 
 Architecture decisions in WordPress are not separate from each other. Each decision supports, depends on, or constrains another decision. These relationships help explain how the overall WordPress architecture works as one complete system.
 
-| Relationship ID | Decision A | Relationship | Decision B | Explanation |
-|---|---|---|---|---|
-| REL-01 | ADD-01 Client-Server Architecture | Enables | ADD-02 Modular Monolith Architecture | Because WordPress runs on a server, it can be deployed as one server-side application with internal modules. |
-| REL-02 | ADD-02 Modular Monolith Architecture | Supports | ADD-03 Core-Extension Separation | Since WordPress has one central core, plugins and themes are kept separate to protect the stability of the core system. |
-| REL-03 | ADD-03 Core-Extension Separation | Enables | ADD-04 Plugin-Based Architecture | Because the core should not be modified directly, plugins are used to add new features safely. |
-| REL-04 | ADD-04 Plugin-Based Architecture | Depends On | ADD-05 Hooks for Event-Driven Extension | Plugins need hooks to communicate with WordPress Core and run functionality at specific events. |
-| REL-05 | ADD-05 Hooks for Event-Driven Extension | Supports | ADD-03 Core-Extension Separation | Hooks allow plugins and themes to extend WordPress without changing the core files. |
-| REL-06 | ADD-06 Theme-Based Presentation Layer | Supports | ADD-03 Core-Extension Separation | Themes manage design and layout separately, so visual changes do not affect WordPress Core logic. |
-| REL-07 | ADD-07 MySQL/MariaDB Data Model | Supports | ADD-04 Plugin-Based Architecture | Plugins can store extra settings, metadata, and configuration data using WordPress database tables. |
-| REL-08 | ADD-08 Role-Based Access Control | Constrains | ADD-04 Plugin-Based Architecture | Plugins must follow WordPress user roles and permissions to avoid unauthorized access and security risks. |
+| Relationship ID | Decision A                              | Relationship | Decision B                              | Explanation                                                                                                             |
+| --------------- | --------------------------------------- | ------------ | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| REL-01          | ADD-01 Client-Server Architecture       | Enables      | ADD-02 Modular Monolith Architecture    | Because WordPress runs on a server, it can be deployed as one server-side application with internal modules.            |
+| REL-02          | ADD-02 Modular Monolith Architecture    | Supports     | ADD-03 Core-Extension Separation        | Since WordPress has one central core, plugins and themes are kept separate to protect the stability of the core system. |
+| REL-03          | ADD-03 Core-Extension Separation        | Enables      | ADD-04 Plugin-Based Architecture        | Because the core should not be modified directly, plugins are used to add new features safely.                          |
+| REL-04          | ADD-04 Plugin-Based Architecture        | Depends On   | ADD-05 Hooks for Event-Driven Extension | Plugins need hooks to communicate with WordPress Core and run functionality at specific events.                         |
+| REL-05          | ADD-05 Hooks for Event-Driven Extension | Supports     | ADD-03 Core-Extension Separation        | Hooks allow plugins and themes to extend WordPress without changing the core files.                                     |
+| REL-06          | ADD-06 Theme-Based Presentation Layer   | Supports     | ADD-03 Core-Extension Separation        | Themes manage design and layout separately, so visual changes do not affect WordPress Core logic.                       |
+| REL-07          | ADD-07 MySQL/MariaDB Data Model         | Supports     | ADD-04 Plugin-Based Architecture        | Plugins can store extra settings, metadata, and configuration data using WordPress database tables.                     |
+| REL-08          | ADD-08 Role-Based Access Control        | Constrains   | ADD-04 Plugin-Based Architecture        | Plugins must follow WordPress user roles and permissions to avoid unauthorized access and security risks.               |
 
 These relationships show that WordPress architecture is connected and balanced. The client-server model allows WordPress to run as a server-side application. The modular monolith structure keeps the system simple, while core-extension separation protects the main WordPress Core. Plugins and hooks provide extensibility, themes handle presentation, the database supports content and plugin data, and role-based access control protects the system from unauthorized actions.
 
----
-
-# 9. Decision Relationship Diagram
+The following diagram provides a visual overview of the relationships between the Architecture Design Decisions (ADDs) described above.
 
 ```mermaid
 graph TD
@@ -574,11 +572,10 @@ graph TD
     H -->|REL-08 constrains| D
 ```
 
-This diagram shows the relationship between the eight architecture design decisions. Each relationship explains how one decision affects another decision in the WordPress architecture.
+The diagram summarizes how the major architecture decisions influence one another and collectively shape the overall WordPress architecture.
 
----
 
-# 10. Conclusion
+# 9. Conclusion
 
 This document explains the architecture of WordPress CMS in a simple and structured way. It focuses on the real WordPress core architecture instead of optional third-party integrations.
 
