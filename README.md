@@ -102,22 +102,23 @@ Optional integrations such as payment gateways, analytics tools, or SEO tools ca
 
 ---
 
-# 3. Stakeholders and Their Concerns
+# 3. # 3. Stakeholders and Their Concerns
 
 Stakeholders are people or groups who care about the WordPress system. Each stakeholder has different concerns.
 
-| Stakeholder | Role in WordPress | Main Concerns |
-|---|---|---|
-| Site Visitor | Opens the website and reads content. | Website should be fast, easy to use, and secure. |
-| Content Author | Creates and edits posts/pages. | Content editing should be simple and user-friendly. |
-| Site Administrator | Manages the whole website. | Needs control over users, plugins, themes, backups, and security. |
-| Plugin Developer | Builds plugins for extra features. | Needs clear hooks, plugin compatibility, and safe extension points. |
-| Theme Developer | Builds website design. | Needs separation between content and presentation. |
-| Website Owner | Owns the website or business. | Wants low cost, reliability, easy updates, and business growth. |
-| Hosting Provider | Provides server environment. | Needs stable server, PHP support, database support, and good performance. |
-| Security Team | Protects the website. | Needs secure login, role control, updates, backups, and monitoring. |
+| Stakeholder        | Role in WordPress                    | Main Concerns                                                             |
+| ------------------ | ------------------------------------ | ------------------------------------------------------------------------- |
+| Site Visitor       | Opens the website and reads content. | Website should be fast, easy to use, and secure.                          |
+| Content Author     | Creates and edits posts/pages.       | Content editing should be simple and user-friendly.                       |
+| Site Administrator | Manages the whole website.           | Needs control over users, plugins, themes, backups, and security.         |
+| Plugin Developer   | Builds plugins for extra features.   | Needs clear hooks, plugin compatibility, and safe extension points.       |
+| Theme Developer    | Builds website design.               | Needs separation between content and presentation.                        |
+| Website Owner      | Owns the website or business.        | Wants low cost, reliability, easy updates, and business growth.           |
+| Hosting Provider   | Provides server environment.         | Needs stable server, PHP support, database support, and good performance. |
+| Security Team      | Protects the website.                | Needs secure login, role control, updates, backups, and monitoring.       |
 
----
+The stakeholders listed above influence many of the architectural decisions in WordPress. For example, administrators require security and manageability, developers need extensibility through plugins and hooks, while visitors expect good performance and usability. Understanding these concerns helps explain why WordPress uses a modular, extensible, and secure architecture.
+
 
 # 4. Key Architecture Drivers
 
