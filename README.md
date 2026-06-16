@@ -232,10 +232,7 @@ flowchart LR
     RunCode --> Output[Final Website Behavior]
     ModifyData --> Output
 ```
-
 This figure shows that when an event occurs in WordPress, hooks allow plugins or themes to run extra code or modify data safely.
-
----
 
 Overall, these architecture styles work together in WordPress. Client-server architecture supports web access, modular monolith keeps the system organized, plugin-based architecture supports extensibility, and event-driven hooks allow safe communication between WordPress Core, plugins, and themes.
 
