@@ -301,7 +301,7 @@ This context view provides a high-level understanding of the system environment 
 
 ## 6.3 Logical / Module View
 
-The logical view shows the internal parts of WordPress.
+The logical view presents the main internal components of the WordPress architecture and illustrates how these modules interact to process user requests and deliver website content.
 
 ```mermaid
 flowchart TD
@@ -323,15 +323,20 @@ flowchart TD
     Hooks --> Core
 ```
 
+The architecture begins when a user sends a request through a web browser. The web server, such as Apache or Nginx, receives the request and forwards it to the PHP runtime environment, where the WordPress core application is executed.
+
+The WordPress core coordinates several internal modules, including content management, user and role management, media management, the admin dashboard, themes, plugins, and the hook system. These modules work together to provide the required functionality and retrieve or store data in the MySQL or MariaDB database.
+
+Themes are responsible for controlling the presentation layer and defining the visual appearance of the website. Plugins extend the functionality of WordPress and interact with the core through actions and filters provided by the hook system.
+
 Simple explanation:
 
-- The browser sends a request.
-- The web server runs PHP.
-- PHP loads WordPress Core.
-- WordPress Core communicates with themes, plugins, hooks, and database.
-- The final page is displayed to the user.
+* The browser sends a request to the web server.
+* The web server executes the PHP runtime.
+* PHP loads the WordPress core.
+* The WordPress core interacts with internal modules, plugins, themes, hooks, and the database.
+* The generated content is formatted by the theme and displayed to the user.
 
----
 
 ## 6.4 Plugin and Hooks View
 
