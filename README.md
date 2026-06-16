@@ -124,13 +124,16 @@ The stakeholders listed above influence many of the architectural decisions in W
 
 Architecture drivers are the important reasons that influence architecture decisions.
 
-| Key Driver | Easy Explanation | Impact on Architecture |
-|---|---|---|
-| Easy Content Management | Users should create and update content easily. | Requires admin dashboard, editor, media library, posts, and pages. |
-| Extensibility | New features should be added without changing the core. | Requires plugins and hooks. |
-| Customizable Design | Website look should be flexible and adaptable for different brands. | Requires themes, templates, and styling support. |
-| Security | User accounts, roles, and admin area must be protected. | Requires login controls, permissions, secure plugins, and update mechanisms. |
-| Performance | Website should load quickly and handle multiple users efficiently. | Requires optimized PHP execution, database queries, caching, and careful plugin selection. |
+| Key Driver              | Easy Explanation                                                    | Impact on Architecture                                                                     |
+| ----------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Easy Content Management | Users should create and update content easily.                      | Requires admin dashboard, editor, media library, posts, and pages.                         |
+| Extensibility           | New features should be added without changing the core.             | Requires plugins and hooks.                                                                |
+| Customizable Design     | Website look should be flexible and adaptable for different brands. | Requires themes, templates, and styling support.                                           |
+| Security                | User accounts, roles, and admin area must be protected.             | Requires login controls, permissions, secure plugins, and update mechanisms.               |
+| Performance             | Website should load quickly and handle multiple users efficiently.  | Requires optimized PHP execution, database queries, caching, and careful plugin selection. |
+
+These architecture drivers directly influence the design of WordPress. Easy content management led to the development of the admin dashboard and content management features. Extensibility is achieved through plugins and hooks, while customizable design is supported through themes and templates. Security requirements resulted in role-based access control and update mechanisms, whereas performance requirements encourage efficient database usage, caching, and optimized server-side processing.
+
 
 # 5. Architecture Styles Used in WordPress
 
