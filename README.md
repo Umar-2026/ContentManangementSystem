@@ -164,9 +164,9 @@ This figure shows how the browser acts as the client, while the web server, PHP 
 
 ## 5.2 Modular Monolith Architecture
 
-WordPress follows a modular monolith structure. It is deployed as one main application, but internally it is divided into different modules. Each module handles a specific responsibility.
+WordPress follows a modular monolith architecture. It is deployed and executed as a single application, while its internal functionality is organized into multiple independent modules. Each module is responsible for a specific business function and collaborates with other modules through the WordPress core.
 
-```mermaid
+```mermaid id="m4x8qp"
 flowchart TD
     WP[WordPress Core / Main Application]
 
@@ -180,9 +180,22 @@ flowchart TD
     WP --> Settings[Settings Module]
 ```
 
-This figure shows that WordPress works as one main application, but its internal responsibilities are divided into modules such as posts, users, comments, media, themes, plugins, and settings.
+The WordPress core acts as the central component that coordinates communication between all modules. Although these modules are logically separated according to their responsibilities, they are packaged, deployed, and executed within a single codebase and runtime environment.
 
----
+The major modules include:
+
+* Posts Module manages blog posts and related content operations.
+* Pages Module handles static website pages.
+* Users Module manages user accounts, authentication, and roles.
+* Comments Module processes user comments and moderation activities.
+* Media Module manages file uploads and media libraries.
+* Themes Module controls the visual presentation and layout of the website.
+* Plugins Module extends the functionality of WordPress through additional features.
+* Settings Module manages system configuration and administrative preferences.
+
+This architectural style enables clear separation of concerns while maintaining the simplicity of a single deployment unit. It also improves maintainability, supports extensibility through plugins and themes, and simplifies system updates and administration.
+
+This figure demonstrates that WordPress operates as a unified application while distributing its internal responsibilities across multiple specialized modules.
 
 ## 5.3 Plugin-Based / Microkernel-Like Architecture
 
