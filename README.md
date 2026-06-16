@@ -145,7 +145,7 @@ WordPress does not use only one architecture style. It combines multiple archite
 
 WordPress uses client-server architecture. The user accesses the website through a web browser, while WordPress runs on the server side. The browser sends a request, and the server processes it using PHP, WordPress Core, and the database.
 
-```mermaid
+```mermaid id="p16xep"
 flowchart LR
     Client[Client / Web Browser] -->|HTTP/HTTPS Request| Server[Web Server]
     Server --> PHP[PHP Runtime]
@@ -157,9 +157,10 @@ flowchart LR
     Server -->|HTML/CSS/JS Response| Client
 ```
 
-This figure shows how the browser acts as the client, while the web server, PHP runtime, WordPress Core, and database work on the server side.
+The figure illustrates the flow of communication between the client and the server in WordPress. The client device hosts the web browser, which sends HTTP/HTTPS requests to the web server. On the server side, the PHP Runtime executes the WordPress Core, which retrieves or stores data in the MySQL/MariaDB database. After processing the request, the server generates an HTML/CSS/JavaScript response and sends it back to the client browser for display.
 
----
+This figure shows how the browser acts as the client, while the web server, PHP runtime, WordPress Core, and database work together on the server side to deliver website content.
+
 
 ## 5.2 Modular Monolith Architecture
 
