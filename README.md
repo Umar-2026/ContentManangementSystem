@@ -102,7 +102,7 @@ Optional integrations such as payment gateways, analytics tools, or SEO tools ca
 
 ---
 
-# 3. # 3. Stakeholders and Their Concerns
+# 3. Stakeholders and Their Concerns
 
 Stakeholders are people or groups who care about the WordPress system. Each stakeholder has different concerns.
 
