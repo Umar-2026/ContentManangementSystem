@@ -335,7 +335,7 @@ Simple explanation:
 
 ## 6.4 Plugin and Hooks View
 
-This view explains how WordPress can be extended without modifying the core.
+This view illustrates how WordPress supports extensibility through its plugin and hook mechanism without requiring modifications to the core system.
 
 ```mermaid
 flowchart LR
@@ -352,11 +352,19 @@ flowchart LR
     Filters --> Modify[Modify content or data]
 ```
 
+The hook system serves as an extension layer between the WordPress core and external components such as plugins and themes. It enables developers to add or customize functionality while preserving the integrity of the core codebase.
+
+WordPress provides two types of hooks:
+
+* Actions allow plugins and themes to execute custom code when specific events occur within the system.
+* Filters allow plugins and themes to modify content, data, or output before it is displayed or stored.
+
+Plugins and themes interact with the hook system rather than directly changing the WordPress core. This approach promotes loose coupling, simplifies maintenance, supports safe system updates, and improves scalability and reusability.
+
 Simple explanation:
 
-Plugins and themes do not need to change WordPress Core. They connect to WordPress through hooks. This makes WordPress flexible and maintainable.
+Plugins and themes do not need to modify the WordPress core. Instead, they connect to predefined hooks to add new functionality or modify existing behaviour. This design makes WordPress flexible, maintainable, and easy to extend.
 
----
 
 ## 6.5 Deployment View
 
