@@ -292,7 +292,13 @@ flowchart LR
 
 ![WordPress CMS Context Diagram](Context%20Diagram.png)
 
-The context view shows the boundary of the WordPress system. It explains which users interact with WordPress and which technical systems support it.
+The context view defines the scope and boundary of the WordPress Content Management System (CMS). It illustrates how different external users and supporting technical systems interact with the platform.
+
+The primary users of the system include administrators, content authors, editors, and website visitors. Administrators manage the overall configuration, user permissions, themes, and plugins. Authors and editors create, modify, review, and publish website content, while visitors access and consume the published information through a web browser.
+
+The WordPress CMS also interacts with several external technical systems, such as the web hosting server, database server, email services, third-party plugins, themes, and external APIs. These supporting components enable content storage, authentication, communication, customization, and additional functionality.
+
+This context view provides a high-level understanding of the system environment by showing the relationships between WordPress and its external entities without exposing internal implementation details.
 
 ---
 
