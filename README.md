@@ -33,8 +33,7 @@ A key idea in WordPress is that the core system should not be changed directly. 
 - [6. Architecture Views Chosen](#6-architecture-views-chosen)
 - [7. Key Architecture Design Decisions](#7-key-architecture-design-decisions)
 - [8. Relationships Between Architecture Design Decisions](#8-relationships-between-architecture-design-decisions)
-- [9. Decision Relationship Diagram](#9-decision-relationship-diagram)
-- [10. Conclusion](#10-conclusion)
+- [9. Conclusion](#10-conclusion)
 
 ---
 
@@ -356,9 +355,9 @@ Plugins and themes do not need to change WordPress Core. They connect to WordPre
 ![WordPress CMS Deployment Diagram](./Deployment%20Diagram.png)
 
 
-The deployment view shows how WordPress CMS is deployed in a cloud hosting environment. Site Visitors and Content Authors/Administrators access the website through a web browser using HTTP/HTTPS requests. Requests first pass through the Internet/DNS layer, which resolves the domain name, and then through the CDN/WAF layer, which caches static content and filters traffic for security. A Load Balancer distributes incoming requests across multiple WordPress instances to improve scalability and availability.
+The deployment view shows how WordPress CMS is deployed in a cloud hosting environment. Site Visitors and Content Authors/Administrators access the website through a web browser using HTTP and HTTPS requests. Requests first pass through the Internet or DNS layer, which resolves the domain name, and then through the CDN or WAF layer, which caches static content and filters traffic for security. A Load Balancer distributes incoming requests across multiple WordPress instances to improve scalability and availability.
 
-The WordPress application is deployed on multiple Web Server/WordPress instances running Apache/Nginx, PHP, and WordPress. These instances process website requests and administrative operations. Shared Media Storage stores uploaded images, videos, and documents, while the Redis Cache Layer improves performance by caching frequently used data and sessions. The MySQL/MariaDB Database stores website content, pages, posts, users, comments, and configuration settings. External services such as SMTP/Email Service, OAuth Provider, Payment Gateway, and Backup/Monitoring Service integrate with WordPress to provide notifications, authentication, payment processing, backups, and system monitoring. The deployment architecture ensures scalability, high availability, performance, and reliability.
+The WordPress application is deployed on multiple Web Server/WordPress instances running Apache or Nginx, PHP, and WordPress. These instances process website requests and administrative operations. Shared Media Storage stores uploaded images, videos, and documents, while the Redis Cache Layer improves performance by caching frequently used data and sessions. The MySQL or MariaDB Database stores website content, pages, posts, users, comments, and configuration settings. External services such as SMTP/Email Service, OAuth Provider, Payment Gateway, and Backup/Monitoring Service integrate with WordPress to provide notifications, authentication, payment processing, backups, and system monitoring. The deployment architecture ensures scalability, high availability, performance, and reliability.
 
 | Deployment Element     | Responsibility                                           |
 | ---------------------- | -------------------------------------------------------- |
