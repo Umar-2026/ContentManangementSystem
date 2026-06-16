@@ -355,32 +355,38 @@ Plugins and themes do not need to change WordPress Core. They connect to WordPre
 
 ![WordPress CMS Deployment Diagram](./Deployment%20Diagram.png)
 
-The deployment view shows how WordPress runs in a real hosting environment.
 
-| Deployment Element | Responsibility |
-|---|---|
-| Web Browser | Used by visitors and admins to access WordPress. |
-| Web Server | Handles HTTP/HTTPS requests. |
-| PHP Runtime | Executes WordPress PHP code. |
-| WordPress Core | Runs main CMS logic. |
+The deployment view shows how WordPress CMS is deployed in a cloud hosting environment. Site Visitors and Content Authors/Administrators access the website through a web browser using HTTP/HTTPS requests. Requests first pass through the Internet/DNS layer, which resolves the domain name, and then through the CDN/WAF layer, which caches static content and filters traffic for security. A Load Balancer distributes incoming requests across multiple WordPress instances to improve scalability and availability.
+
+The WordPress application is deployed on multiple Web Server/WordPress instances running Apache/Nginx, PHP, and WordPress. These instances process website requests and administrative operations. Shared Media Storage stores uploaded images, videos, and documents, while the Redis Cache Layer improves performance by caching frequently used data and sessions. The MySQL/MariaDB Database stores website content, pages, posts, users, comments, and configuration settings. External services such as SMTP/Email Service, OAuth Provider, Payment Gateway, and Backup/Monitoring Service integrate with WordPress to provide notifications, authentication, payment processing, backups, and system monitoring. The deployment architecture ensures scalability, high availability, performance, and reliability.
+
+| Deployment Element     | Responsibility                                           |
+| ---------------------- | -------------------------------------------------------- |
+| Web Browser            | Used by visitors and admins to access WordPress.         |
+| Web Server             | Handles HTTP/HTTPS requests.                             |
+| PHP Runtime            | Executes WordPress PHP code.                             |
+| WordPress Core         | Runs main CMS logic.                                     |
 | MySQL/MariaDB Database | Stores content, users, comments, settings, and metadata. |
-| wp-content Folder | Stores themes, plugins, and uploaded files. |
+| wp-content Folder      | Stores themes, plugins, and uploaded files.              |
 
 Simple deployment flow:
 
 ```text
 User Browser
    ↓
-Web Server
+Internet / DNS
    ↓
-PHP Runtime
+CDN / WAF
    ↓
-WordPress Core
+Load Balancer
    ↓
-MySQL/MariaDB Database
+WordPress Web Server Instances
+   ↓
+Cache Layer (Redis)
+   ↓
+MySQL / MariaDB Database
 ```
 
----
 
 ## 6.6 Data Model View
 
