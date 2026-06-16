@@ -580,7 +580,7 @@ WordPress works as a PHP-based CMS using client-server architecture, modular mon
 
 The most important design idea is that WordPress Core should remain stable and should not be modified directly. Themes are used for design, and plugins are used for extra features. Hooks allow plugins and themes to connect with the core without changing it.
 
-The key architecture decisions and their relationships show how WordPress supports flexibility, maintainability, extensibility, usability, and security
+The key architecture decisions and their relationships show how WordPress supports flexibility, maintainability, extensibility, usability, and security.
 
 
 
